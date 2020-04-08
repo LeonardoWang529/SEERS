@@ -1,4 +1,4 @@
-package com.example.seersandroid.Views.StudentID;
+package com.example.seersandroid.ViewViewModel.StudentID;
 
 import android.os.Bundle;
 

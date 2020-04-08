@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/midBlue"
-    android:layout_marginTop="50dp">
+    android:layout_margin="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -84,6 +84,7 @@
         android:padding="10dp"
         android:layout_gravity="center"
         android:textColor="@color/orange"
+        android:layout_margin="20dp"
         android:text="Dollar: $100"/>
 
 
@@ -91,7 +92,7 @@
         android:id="@+id/userMajor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="50dp"
         android:textColor="@color/orange"
         android:layout_gravity="center"
         android:text="School: Engineering"/>
