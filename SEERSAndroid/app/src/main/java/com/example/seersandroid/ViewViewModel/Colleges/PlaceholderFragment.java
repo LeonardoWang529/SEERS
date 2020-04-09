@@ -1,18 +1,21 @@
-package com.example.seersandroid.ViewViewModel.Questionnairs;
+package com.example.seersandroid.ViewViewModel.Colleges;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.seersandroid.R;
+import com.example.seersandroid.ViewViewModel.Colleges.CollegeLists.CollegeListFragment;
+import com.example.seersandroid.ViewViewModel.Colleges.CollegeMap.CollegeMapsFragment;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -45,12 +48,23 @@ public class PlaceholderFragment extends Fragment {
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_questionnairs_container, container, false);
-        final TextView textView = root.findViewById(R.id.section_label);
-        pageViewModel.getText().observe(this, new Observer<String>() {
+        View root = inflater.inflate(R.layout.fragment_colleges_container, container, false);
+
+        pageViewModel.getText().observe(this.getActivity(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+
+                if(s.equalsIgnoreCase("1")){
+                    Fragment fragment = new CollegeListFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(R.id.fragmentContainer, fragment)
+                            .commit();
+                }else{
+                    Fragment fragment = new CollegeMapsFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(R.id.fragmentContainer, fragment)
+                            .commit();
+                }
             }
         });
         return root;

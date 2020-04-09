@@ -1,12 +1,10 @@
-package com.example.seersandroid.ViewViewModel.CollegeLists;
+package com.example.seersandroid.ViewViewModel.Colleges.CollegeLists;
 
 import com.example.seersandroid.data.model.College;
 
 import java.util.List;
 
 import androidx.annotation.Nullable;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 public class CollegeListResult {
 

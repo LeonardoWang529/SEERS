@@ -1,8 +1,5 @@
-package com.example.seersandroid.ViewViewModel.CollegeLists;
+package com.example.seersandroid.ViewViewModel.Colleges.CollegeLists;
 
-import android.app.Application;
-
-import com.example.seersandroid.Classes.Operation;
 import com.example.seersandroid.Classes.OperationListener;
 import com.example.seersandroid.data.Result;
 import com.example.seersandroid.data.collegeModule.CollegeListRepository;
@@ -10,7 +7,6 @@ import com.example.seersandroid.data.model.College;
 
 import java.util.List;
 
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
