@@ -44,6 +44,14 @@ public class LoginRepository{
         dataSource.logout();
     }
 
+    public Student getLoggedinUser(){
+        if(isLoggedIn()){
+            return user;
+        }else{
+            return null;
+        }
+    }
+
     private void setLoggedInUser(Student user) {
         this.user = user;
         // If user credentials will be cached in local storage, it is recommended it be encrypted

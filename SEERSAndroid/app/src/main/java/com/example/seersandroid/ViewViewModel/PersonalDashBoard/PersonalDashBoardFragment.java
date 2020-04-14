@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.seersandroid.R;
+import com.example.seersandroid.data.model.Student;
+import com.example.seersandroid.databinding.FragmentPersonaldashboardBinding;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,19 +20,41 @@ import androidx.lifecycle.ViewModelProviders;
 public class PersonalDashBoardFragment extends Fragment {
 
     private PersonalDashBoardViewModel personalDashBoardViewModel;
+    private FragmentPersonaldashboardBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         personalDashBoardViewModel =
                 ViewModelProviders.of(this).get(PersonalDashBoardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_personaldashboard, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        personalDashBoardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+        binding = FragmentPersonaldashboardBinding.inflate(getLayoutInflater());
+        View v = binding.getRoot();
+
+        personalDashBoardViewModel.getStudent().observe(getActivity(), new Observer<Student>() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onChanged(Student student) {
+                setPersonalAvatorandName(student);
+                setPassScoreFragment(student);
+                setCurrentScoreFragment(student);
             }
         });
-        return root;
+
+        return v;
     }
+
+    public void setPersonalAvatorandName(Student s){
+        binding.name.setText(s.getName());
+        binding.localtion.setText(s.getName());
+        //binding.avater.setImageBitmap();
+    }
+
+    public void setPassScoreFragment(Student s){
+        //pass to fragment, because oberser change will auto change the fragments,
+        //no need to add another ovserve on each fragments.
+    }
+
+    public void setCurrentScoreFragment(Student s){
+        //pass to fragment
+    }
+
 }
