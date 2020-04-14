@@ -5,14 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.seersandroid.R;
 import com.example.seersandroid.databinding.FragmentCollegesBinding;
-import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 public class CollegesFragment extends Fragment {
 
@@ -25,7 +22,7 @@ public class CollegesFragment extends Fragment {
         binding = FragmentCollegesBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this.getContext(),
+        CollegeSectionsPagerAdapter sectionsPagerAdapter = new CollegeSectionsPagerAdapter(this.getContext(),
                 getActivity().getSupportFragmentManager());
         binding.viewPager.setAdapter(sectionsPagerAdapter);
         binding.tabs.setupWithViewPager(binding.viewPager);

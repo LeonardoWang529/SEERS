@@ -51,10 +51,25 @@ public class PersonalDashBoardFragment extends Fragment {
     public void setPassScoreFragment(Student s){
         //pass to fragment, because oberser change will auto change the fragments,
         //no need to add another ovserve on each fragments.
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("currentStudent",s);
+        PassScoreFragment passScoreFragment = new PassScoreFragment();
+        passScoreFragment.setArguments(bundle);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .add(R.id.pased_score,passScoreFragment)
+                .commit();
+
     }
 
     public void setCurrentScoreFragment(Student s){
-        //pass to fragment
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("currentStudent",s);
+        CurrentScoreFragment currentScoreFragment = new CurrentScoreFragment();
+        currentScoreFragment.setArguments(bundle);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .add(R.id.current_score,currentScoreFragment)
+                .commit();
+
     }
 
 }

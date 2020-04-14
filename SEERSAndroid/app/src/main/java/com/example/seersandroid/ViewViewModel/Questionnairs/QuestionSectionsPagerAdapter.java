@@ -14,13 +14,13 @@ import androidx.fragment.app.FragmentPagerAdapter;
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
+public class QuestionSectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
     private static final int[] TAB_TITLES = new int[] {R.string.tab_text_1, R.string.tab_text_2};
     private final Context mContext;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public QuestionSectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
     }
@@ -29,7 +29,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        return QuestionPlaceholderFragment.newInstance(position + 1);
     }
 
     @Nullable

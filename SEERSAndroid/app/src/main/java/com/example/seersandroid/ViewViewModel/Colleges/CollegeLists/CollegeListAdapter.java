@@ -51,10 +51,7 @@ public class CollegeListAdapter extends
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 itemClickListener.onClick(collegeList.get(position));
-
             }
         });
     }

@@ -19,14 +19,14 @@ import androidx.lifecycle.ViewModelProviders;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class PlaceholderFragment extends Fragment {
+public class CollegePlaceholderFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    private PageViewModel pageViewModel;
+    private CollegePageViewModel collegePageViewModel;
 
-    public static PlaceholderFragment newInstance(int index) {
-        PlaceholderFragment fragment = new PlaceholderFragment();
+    public static CollegePlaceholderFragment newInstance(int index) {
+        CollegePlaceholderFragment fragment = new CollegePlaceholderFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_SECTION_NUMBER, index);
         fragment.setArguments(bundle);
@@ -36,12 +36,12 @@ public class PlaceholderFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        pageViewModel = ViewModelProviders.of(this).get(PageViewModel.class);
+        collegePageViewModel = ViewModelProviders.of(this).get(CollegePageViewModel.class);
         int index = 1;
         if (getArguments() != null) {
             index = getArguments().getInt(ARG_SECTION_NUMBER);
         }
-        pageViewModel.setIndex(index);
+        collegePageViewModel.setIndex(index);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class PlaceholderFragment extends Fragment {
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_colleges_container, container, false);
 
-        pageViewModel.getText().observe(this.getActivity(), new Observer<String>() {
+        collegePageViewModel.getText().observe(this.getActivity(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
 

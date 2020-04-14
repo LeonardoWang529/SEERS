@@ -1,9 +1,12 @@
 package com.example.seersandroid.data.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
  */
-public class Student {
+public class Student implements Parcelable {
 
     private String userId;
     private String userName;
@@ -14,16 +17,44 @@ public class Student {
     private String SAT_verbal;
     private String expense_limit;
 
-    public Student(String userId, String userName, String password, String name,
-                   String gender, String SAT_math, String SAT_verbal, String expense_limit) {
-        this.userId = userId;
-        this.userName = userName;
-        this.password = password;
-        this.name = name;
-        this.gender = gender;
-        this.SAT_math = SAT_math;
-        this.SAT_verbal = SAT_verbal;
-        this.expense_limit = expense_limit;
+    public Student(Parcel in) {
+        this.userId = in.readString();
+        this.userName = in.readString();
+        this.password = in.readString();
+        this.name = in.readString();
+        this.gender = in.readString();
+        this.SAT_math = in.readString();
+        this.SAT_verbal = in.readString();
+        this.expense_limit = in.readString();
+    }
+
+    public static final Creator<Student> CREATOR = new Creator<Student>() {
+        @Override
+        public Student createFromParcel(Parcel in) {
+            return new Student(in);
+        }
+
+        @Override
+        public Student[] newArray(int size) {
+            return new Student[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flag) {
+        dest.writeString(userId);
+        dest.writeString(userName);
+        dest.writeString(password);
+        dest.writeString(name);
+        dest.writeString(gender);
+        dest.writeString(SAT_math);
+        dest.writeString(SAT_verbal);
+        dest.writeString(expense_limit);
     }
 
     public String getUserId() {
@@ -89,4 +120,6 @@ public class Student {
     public void setExpense_limit(String expense_limit) {
         this.expense_limit = expense_limit;
     }
+
+
 }
