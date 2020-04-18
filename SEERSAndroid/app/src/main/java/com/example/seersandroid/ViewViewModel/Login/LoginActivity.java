@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.seersandroid.R;
+import com.example.seersandroid.ViewViewModel.NavigationActivity.NavigationActivity;
 import com.example.seersandroid.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
@@ -35,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         View v = binding.getRoot();
         setContentView(v);
 
-        loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
+        loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory(getApplication()))
                 .get(LoginViewModel.class);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
@@ -116,9 +118,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
-        String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
-        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        //String welcome = getString(R.string.welcome) + model.getDisplayName();
+        //Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        Intent i = new Intent(this, NavigationActivity.class);
+        startActivity(i);
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {

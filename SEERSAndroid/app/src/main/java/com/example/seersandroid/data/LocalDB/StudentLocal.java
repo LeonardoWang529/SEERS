@@ -1,25 +1,48 @@
-package com.example.seersandroid.data.model;
+package com.example.seersandroid.data.LocalDB;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Data class that captures user information for logged in users retrieved from LoginRepository
- */
-public class Student implements Parcelable {
+import java.io.Serializable;
 
-    private int userId;
-    private String userName;
-    private String password;
-    private String name;
-    private String gender;
-    private String SAT_math;
-    private String SAT_verbal;
-    private String expense_limit;
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
-    public Student(){}
+@Entity(tableName = "student_table")
+public class StudentLocal implements Parcelable {
 
-    public Student(Parcel in) {
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name = "userId")
+    public int userId;
+
+    @ColumnInfo(name = "userName")
+    public String userName;
+
+    @ColumnInfo(name = "password")
+    public String password;
+
+    @ColumnInfo(name = "name")
+    public String name;
+
+    @ColumnInfo(name = "gender")
+    public String gender;
+
+    @ColumnInfo(name = "SAT_math")
+    public String SAT_math;
+
+    @ColumnInfo(name = "SAT_verbal")
+    public String SAT_verbal;
+
+    @ColumnInfo(name = "expense_limit")
+    public String expense_limit;
+
+    public StudentLocal(){}
+
+    protected StudentLocal(Parcel in) {
         this.userId = in.readInt();
         this.userName = in.readString();
         this.password = in.readString();
@@ -30,15 +53,15 @@ public class Student implements Parcelable {
         this.expense_limit = in.readString();
     }
 
-    public static final Creator<Student> CREATOR = new Creator<Student>() {
+    public static final Creator<StudentLocal> CREATOR = new Creator<StudentLocal>() {
         @Override
-        public Student createFromParcel(Parcel in) {
-            return new Student(in);
+        public StudentLocal createFromParcel(Parcel in) {
+            return new StudentLocal(in);
         }
 
         @Override
-        public Student[] newArray(int size) {
-            return new Student[size];
+        public StudentLocal[] newArray(int size) {
+            return new StudentLocal[size];
         }
     };
 
@@ -122,6 +145,7 @@ public class Student implements Parcelable {
     public void setExpense_limit(String expense_limit) {
         this.expense_limit = expense_limit;
     }
+
 
 
 }

@@ -15,7 +15,7 @@ public class PersonalDashBoardViewModel extends ViewModel {
 
     public PersonalDashBoardViewModel() {
         mStudent = new MutableLiveData<>();
-        studnetStatus = LoginRepository.getInstance(new LoginDataSource());
+        studnetStatus = LoginRepository.getInstance(new LoginDataSource(null));
         mStudent.setValue(studnetStatus.getLoggedinUser());
     }
 

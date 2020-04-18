@@ -4,6 +4,8 @@ import com.example.seersandroid.Classes.OperationListener;
 import com.example.seersandroid.data.Result;
 import com.example.seersandroid.data.model.Student;
 
+import androidx.annotation.Nullable;
+
 /**
  * Class that requests authentication and user information from the remote data source and
  * maintains an in-memory cache of login status and user credentials information.
@@ -28,7 +30,7 @@ public class LoginRepository{
         return instance;
     }
 
-    public static LoginRepository getInstance(LoginDataSource dataSource) {
+    public static LoginRepository getInstance(@Nullable LoginDataSource dataSource) {
         if (instance == null) {
             instance = new LoginRepository(dataSource);
         }
@@ -61,7 +63,8 @@ public class LoginRepository{
     public void login(String username, String password) {
         // handle login
         dataSource.setListerner(mlistener);
-        dataSource.login(username, password);
+        //dataSource.login(username, password);
+        dataSource.loginlocal(username,password);
     }
 
     public void setResult(Result result){

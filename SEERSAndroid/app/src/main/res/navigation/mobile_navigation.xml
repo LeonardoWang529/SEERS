@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_college"
-        android:name="com.example.seersandroid.ViewViewModel.NavigationActivity.ui.dashboard.DashboardFragment"
+        android:name="com.example.seersandroid.ViewViewModel.Colleges.CollegesFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_colleges" />
 

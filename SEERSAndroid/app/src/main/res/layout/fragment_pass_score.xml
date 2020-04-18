@@ -17,7 +17,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             android:orientation="horizontal">
 
         <TextView
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="50dp"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             android:text="87"/>
 
 
@@ -56,13 +56,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="EOG Math grade score"
-            android:layout_marginLeft="30dp" />
+            android:layout_marginLeft="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/orange"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="10dp"
             android:text="Growth exceed"/>
 
     </LinearLayout>
@@ -78,7 +78,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -109,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="50dp"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             android:text="87"/>
 
 
@@ -117,13 +117,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="EOG Reading grade score"
-            android:layout_marginLeft="30dp" />
+            android:layout_marginLeft="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/orange"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="10dp"
             android:text="Growth exceed"/>
 
 

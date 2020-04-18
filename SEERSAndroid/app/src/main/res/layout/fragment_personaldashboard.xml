@@ -5,24 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:gravity="center"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".ViewViewModel.PersonalDashBoard.PersonalDashBoardFragment">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/avater"
         android:layout_width="65dp"
         android:layout_height="65dp"
-        android:src="@mipmap/leocopy"
-        android:layout_marginTop="20dp"
+        android:src="@mipmap/ic_launcher_round"
         android:layout_margin="20dp"/>
 
         <LinearLayout
@@ -50,26 +49,26 @@
 
     <View
         android:layout_width="fill_parent"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:layout_height="1dp"
         android:background="#FF0000FF" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/current_score"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </fragment>
+    </androidx.fragment.app.FragmentContainerView>
 
     <View
         android:layout_width="fill_parent"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:layout_height="1dp"
         android:background="#FF0000FF" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/pased_score"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </fragment>
+    </androidx.fragment.app.FragmentContainerView>
 
 </LinearLayout>
