@@ -50,6 +50,9 @@
         <activity
             android:name=".ViewViewModel.SignUp.SignUpActivity"
             android:label="@string/title_activity_sign_up" />
+        <activity
+            android:name=".ViewViewModel.StudentID.StudentIdActivity"
+            android:label="@string/title_activity_student_id" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />

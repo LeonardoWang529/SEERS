@@ -1,17 +1,17 @@
 package com.example.seersandroid.ViewViewModel.PersonalDashBoard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.seersandroid.R;
+import com.example.seersandroid.ViewViewModel.StudentID.StudentIdActivity;
 import com.example.seersandroid.data.model.Student;
 import com.example.seersandroid.databinding.FragmentPersonaldashboardBinding;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -36,10 +36,22 @@ public class PersonalDashBoardFragment extends Fragment {
                 setPersonalAvatorandName(student);
                 setPassScoreFragment(student);
                 setCurrentScoreFragment(student);
+                setAvaterOnclickListener();
             }
         });
 
         return v;
+    }
+
+    public void setAvaterOnclickListener(){
+        binding.avater.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), StudentIdActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
     public void setPersonalAvatorandName(Student s){

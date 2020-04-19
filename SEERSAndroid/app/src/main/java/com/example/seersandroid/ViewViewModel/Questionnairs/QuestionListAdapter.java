@@ -48,7 +48,8 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull QuestionItem holder, int position) {
-        //holder.question.setText(questionList.get(position).getQuestion());
+        holder.question.setText(questionList.get(position).getQuestion());
+        holder.checkBox.setText(questionList.get(position).getAnswer());
         itemClickListener.onClick(questionList.get(position));
     }
 

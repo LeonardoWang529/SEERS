@@ -60,17 +60,18 @@ public class QuestionPlaceholderFragment extends Fragment {
         binding = FragmentQuestionnairsContainerBinding.inflate(getLayoutInflater());
         View root = binding.getRoot();
 
-        RecyclerView questionRecycleView = binding.questionRecyclerView;
+        final RecyclerView questionRecycleView = binding.questionRecyclerView;
         questionRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        final QuestionListAdapter questionListAdapter = new QuestionListAdapter();
-        questionRecycleView.setAdapter(questionListAdapter);
-        questionListAdapter.setListerner(itemClickListener);
 
         questionPageViewModel.getQuestionList().observe(getActivity(), new Observer<List<Question>>() {
             @Override
             public void onChanged(List<Question> questions) {
+                QuestionListAdapter questionListAdapter = new QuestionListAdapter();
+                questionRecycleView.setAdapter(questionListAdapter);
+                questionListAdapter.setListerner(itemClickListener);
                 questionListAdapter.setQuestionList(questions);
-                getActivity().setResult(Activity.RESULT_OK);
+                questionListAdapter.notifyDataSetChanged();
+                //getActivity().setResult(Activity.RESULT_OK);
             }
         });
 

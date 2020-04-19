@@ -19,7 +19,7 @@ public class QuestionPageViewModel extends ViewModel {
     QuestionnairRepository questionnairRepository;
 
     public QuestionPageViewModel(){
-
+        questionnairRepository = new QuestionnairRepository();
     }
 
     //divide question to two or three pages.

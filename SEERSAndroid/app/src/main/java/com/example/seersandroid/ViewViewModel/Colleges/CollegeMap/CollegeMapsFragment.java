@@ -86,13 +86,13 @@ public class CollegeMapsFragment extends Fragment implements GoogleMap.OnMyLocat
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
-        place_input = v.findViewById(R.id.place_input);
+        //place_input = v.findViewById(R.id.place_input);
         //recyclerView = v.findViewById(R.id.rvAnimals);
 
-/*        // Initialize the AutocompleteSupportFragment.
-        autocompleteFragment = (AutocompleteSupportFragment) getChildFragmentManager().findFragmentById(R.id.autocomplete_fragment);
+        // Initialize the AutocompleteSupportFragment.
+        //autocompleteFragment = (AutocompleteSupportFragment) getChildFragmentManager().findFragmentById(R.id.autocomplete_fragment);
         // Specify the types of place data to return.
-        autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME));*/
+        //autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME));
 
 
         Places.initialize(getActivity(), getResources().getString(R.string.google_maps_key));

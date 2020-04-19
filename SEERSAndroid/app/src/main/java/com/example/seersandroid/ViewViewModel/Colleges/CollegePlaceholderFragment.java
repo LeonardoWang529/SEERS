@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.seersandroid.R;
 import com.example.seersandroid.ViewViewModel.Colleges.CollegeLists.CollegeListFragment;
@@ -12,6 +13,7 @@ import com.example.seersandroid.ViewViewModel.Colleges.CollegeMap.CollegeMapsFra
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -36,11 +38,12 @@ public class CollegePlaceholderFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        collegePageViewModel = ViewModelProviders.of(this).get(CollegePageViewModel.class);
+
         int index = 1;
         if (getArguments() != null) {
             index = getArguments().getInt(ARG_SECTION_NUMBER);
         }
+        collegePageViewModel = ViewModelProviders.of(this).get(CollegePageViewModel.class);
         collegePageViewModel.setIndex(index);
     }
 
@@ -49,24 +52,37 @@ public class CollegePlaceholderFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_colleges_container, container, false);
-
+        final FragmentContainerView fragmentContainerView = root.findViewById(R.id.fragmentContainer);
+        final TextView textView = root.findViewById(R.id.section_label);
         collegePageViewModel.getText().observe(this.getActivity(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
 
                 if(s.equalsIgnoreCase("1")){
                     Fragment fragment = new CollegeListFragment();
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .add(R.id.fragmentContainer, fragment)
+                    getChildFragmentManager().beginTransaction()
+                            .replace(R.id.fragmentContainer, fragment)
                             .commit();
+                    //textView.setText(s);
                 }else{
                     Fragment fragment = new CollegeMapsFragment();
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .add(R.id.fragmentContainer, fragment)
+                    getChildFragmentManager().beginTransaction()
+                            .replace(R.id.fragmentContainer, fragment)
                             .commit();
+
+                    //textView.setText(s);
                 }
             }
         });
+
+/*        final TextView textView = root.findViewById(R.id.section_label);
+        collegePageViewModel.getText().observe(this.getActivity(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                textView.setText(s);
+            }
+        });*/
+
         return root;
     }
 }
