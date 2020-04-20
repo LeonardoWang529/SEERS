@@ -16,7 +16,7 @@
     <string name="tab_text_1">List View</string>
     <string name="tab_text_2">Map View</string>
     <string name="tab_questions_1">Questions 1</string>
-    <string name="tab_question_2">Questions 2</string>
+    <string name="tab_questions_2">Questions 2</string>
     <string name="title_activity_navigation">NavigationActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

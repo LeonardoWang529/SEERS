@@ -70,7 +70,6 @@ public class QuestionPlaceholderFragment extends Fragment {
                 questionRecycleView.setAdapter(questionListAdapter);
                 questionListAdapter.setListerner(itemClickListener);
                 questionListAdapter.setQuestionList(questions);
-                questionListAdapter.notifyDataSetChanged();
                 //getActivity().setResult(Activity.RESULT_OK);
             }
         });

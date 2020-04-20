@@ -52,8 +52,7 @@ public class CollegePlaceholderFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_colleges_container, container, false);
-        final FragmentContainerView fragmentContainerView = root.findViewById(R.id.fragmentContainer);
-        final TextView textView = root.findViewById(R.id.section_label);
+
         collegePageViewModel.getText().observe(this.getActivity(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -63,25 +62,15 @@ public class CollegePlaceholderFragment extends Fragment {
                     getChildFragmentManager().beginTransaction()
                             .replace(R.id.fragmentContainer, fragment)
                             .commit();
-                    //textView.setText(s);
                 }else{
                     Fragment fragment = new CollegeMapsFragment();
                     getChildFragmentManager().beginTransaction()
                             .replace(R.id.fragmentContainer, fragment)
                             .commit();
 
-                    //textView.setText(s);
                 }
             }
         });
-
-/*        final TextView textView = root.findViewById(R.id.section_label);
-        collegePageViewModel.getText().observe(this.getActivity(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });*/
 
         return root;
     }

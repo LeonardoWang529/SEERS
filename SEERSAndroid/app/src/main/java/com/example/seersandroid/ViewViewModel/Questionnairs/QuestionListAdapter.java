@@ -22,6 +22,7 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
 
     public void setQuestionList(List<Question> questionList){
         this.questionList = questionList;
+        notifyDataSetChanged();
     }
 
     @Override
