@@ -14,7 +14,10 @@ import com.example.seersandroid.data.dao.StudentDAO;
 import com.example.seersandroid.data.model.Student;
 
 import java.io.IOException;
+import java.net.URL;
 
+import okhttp3.HttpUrl;
+import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,7 +46,6 @@ public class LoginDataSource implements Operation {
     public void login(String username, String password) {
 
         Call<Student> call = studentDAO.login(username,password);
-
         call.enqueue(new Callback<Student>() {
             @Override
             public void onResponse(Call<Student> call, Response<Student> response) {
