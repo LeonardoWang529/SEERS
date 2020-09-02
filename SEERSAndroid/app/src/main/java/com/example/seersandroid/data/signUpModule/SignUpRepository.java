@@ -1,7 +1,6 @@
 package com.example.seersandroid.data.signUpModule;
 
 
-import com.example.seersandroid.Classes.OperationListener;
 import com.example.seersandroid.data.Result;
 import com.example.seersandroid.data.model.Student;
 
@@ -12,7 +11,6 @@ import com.example.seersandroid.data.model.Student;
 public class SignUpRepository {
 
     private static volatile SignUpRepository instance;
-    private OperationListener mlistener;
     private SignUpDataSource dataSource;
 
     // If user credentials will be cached in local storage, it is recommended it be encrypted
@@ -22,11 +20,6 @@ public class SignUpRepository {
     // private constructor : singleton access
     private SignUpRepository(SignUpDataSource dataSource) {
         this.dataSource = dataSource;
-    }
-
-    public SignUpRepository setOperationListener(OperationListener mlistener){
-        this.mlistener = mlistener;
-        return instance;
     }
 
     public static SignUpRepository getInstance(SignUpDataSource dataSource) {
@@ -53,7 +46,6 @@ public class SignUpRepository {
 
     public void signup(String username, String password) {
         // handle login
-        dataSource.setListerner(mlistener);
         dataSource.signup(username, password);
     }
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewViewModel.NavigationActivity.ui.notifications.NotificationsFragment">
+    tools:context=".ViewViewModel.NavigationActivity.NavigationActivity">
 
     <TextView
         android:id="@+id/text_notifications"

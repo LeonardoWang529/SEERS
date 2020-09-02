@@ -1,13 +1,9 @@
 package com.example.seersandroid.data.signUpModule;
 
-import com.example.seersandroid.Classes.Operation;
-import com.example.seersandroid.Classes.OperationListener;
 import com.example.seersandroid.data.Result;
 import com.example.seersandroid.data.Retrofits;
 import com.example.seersandroid.data.dao.StudentDAO;
 import com.example.seersandroid.data.model.Student;
-
-import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,15 +12,9 @@ import retrofit2.Response;
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
-public class SignUpDataSource implements Operation {
+public class SignUpDataSource{
     StudentDAO studentDAO;
     Retrofits retrofits;
-    OperationListener mlistener;
-
-    @Override
-    public void setListerner(OperationListener operationListener) {
-        mlistener = operationListener;
-    }
 
     public SignUpDataSource(){
         retrofits = Retrofits.getInstance();
@@ -32,24 +22,6 @@ public class SignUpDataSource implements Operation {
     }
 
     public void signup(String username, String password) {
-
-        Call<Student> call = studentDAO.login(username,password);
-
-        call.enqueue(new Callback<Student>() {
-            @Override
-            public void onResponse(Call<Student> call, Response<Student> response) {
-                if(!response.isSuccessful()){
-
-                }
-                Student s = response.body();
-                mlistener.onSuccess(new Result.Success<>(s));
-            }
-
-            @Override
-            public void onFailure(Call<Student> call, Throwable t) {
-                mlistener.onError(new Result.Error(new Exception(t.getMessage())));
-            }
-        });
 
     }
 

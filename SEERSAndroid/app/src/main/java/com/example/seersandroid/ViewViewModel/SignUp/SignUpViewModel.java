@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel;
 
 import android.util.Patterns;
 
-import com.example.seersandroid.Classes.OperationListener;
 import com.example.seersandroid.R;
 import com.example.seersandroid.data.Result;
 import com.example.seersandroid.data.model.Student;
@@ -32,38 +31,8 @@ public class SignUpViewModel extends ViewModel {
 
     public void login(String username, String password) {
         // can be launched in a separate asynchronous job
-        signUpRepository.setOperationListener(SignupListener)
-                .signup(username, password);
+        signUpRepository.signup(username, password);
     }
-
-    OperationListener SignupListener = new OperationListener() {
-        @Override
-        public void onSuccess(Result result) {
-            signUpRepository.setResult(result);
-            Student data = ((Result.Success<Student>) result).getData();
-            signupResult.setValue(new SignUpResult(new SignedUpInUserView(data)));
-        }
-
-        @Override
-        public void onError(Result result) {
-            signupResult.setValue(new SignUpResult(R.string.login_failed));
-        }
-
-        @Override
-        public void onPreExecution() {
-
-        }
-
-        @Override
-        public void onPostExecution() {
-
-        }
-
-        @Override
-        public void onOperationProgressUpdate(String... updateParams) {
-
-        }
-    };
 
 
     public void loginDataChanged(String username, String password) {

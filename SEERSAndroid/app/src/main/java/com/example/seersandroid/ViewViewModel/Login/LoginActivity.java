@@ -3,55 +3,61 @@ package com.example.seersandroid.ViewViewModel.Login;
 import android.app.Activity;
 
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
-import androidx.appcompat.app.AppCompatActivity;
+import butterknife.BindView;
+import dagger.android.support.DaggerAppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.seersandroid.R;
+import com.example.seersandroid.Utilities.ViewModelFactory;
 import com.example.seersandroid.ViewViewModel.NavigationActivity.NavigationActivity;
-import com.example.seersandroid.databinding.ActivityLoginBinding;
 
-public class LoginActivity extends AppCompatActivity {
+import javax.inject.Inject;
+
+public class LoginActivity extends DaggerAppCompatActivity {
 
     private LoginViewModel loginViewModel;
-    private ActivityLoginBinding binding;
+    @BindView(R.id.login) Button login;
+    @BindView(R.id.username) Button username;
+    @BindView(R.id.password) Button password;
+    @BindView(R.id.forgetPassword) Button forgetPassword;
+    @BindView(R.id.loading) ProgressBar loading;
 
+    @Inject
+    LoginFragment mInjectedFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
-        View v = binding.getRoot();
-        setContentView(v);
-
-        loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory(getApplication()))
-                .get(LoginViewModel.class);
-
+        setContentView(R.layout.activity_login);
+        //loginViewModel = new ViewModelProvider(this, viewModelFactory).get(LoginViewModel.class);
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
             public void onChanged(@Nullable LoginFormState loginFormState) {
                 if (loginFormState == null) {
                     return;
                 }
-                binding.login.setEnabled(loginFormState.isDataValid());
+                login.setEnabled(loginFormState.isDataValid());
                 if (loginFormState.getUsernameError() != null) {
-                    binding.username.setError(getString(loginFormState.getUsernameError()));
+                    username.setError(getString(loginFormState.getUsernameError()));
                 }
                 if (loginFormState.getPasswordError() != null) {
-                    binding.password.setError(getString(loginFormState.getPasswordError()));
+                    password.setError(getString(loginFormState.getPasswordError()));
                 }
             }
         });
@@ -62,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (loginResult == null) {
                     return;
                 }
-                binding.loading.setVisibility(View.GONE);
+                loading.setVisibility(View.GONE);
                 if (loginResult.getError() != null) {
                     showLoginFailed(loginResult.getError());
                 }
@@ -89,30 +95,30 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                loginViewModel.loginDataChanged(binding.username.getText().toString(),
-                        binding.password.getText().toString());
+                loginViewModel.loginDataChanged(username.getText().toString(),
+                        password.getText().toString());
             }
         };
-        binding.username.addTextChangedListener(afterTextChangedListener);
-        binding.password.addTextChangedListener(afterTextChangedListener);
-        binding.password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        username.addTextChangedListener(afterTextChangedListener);
+        password.addTextChangedListener(afterTextChangedListener);
+        password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(binding.username.getText().toString(),
-                            binding.password.getText().toString());
+                    loginViewModel.login(username.getText().toString(),
+                            password.getText().toString());
                 }
                 return false;
             }
         });
 
-        binding.login.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binding.loading.setVisibility(View.VISIBLE);
-                loginViewModel.login(binding.username.getText().toString(),
-                        binding.password.getText().toString());
+                loading.setVisibility(View.VISIBLE);
+                loginViewModel.login(username.getText().toString(),
+                        password.getText().toString());
             }
         });
     }

@@ -1,6 +1,5 @@
 package com.example.seersandroid.ViewViewModel.Questionnairs;
 
-import com.example.seersandroid.Classes.OperationListener;
 import com.example.seersandroid.data.Result;
 import com.example.seersandroid.data.model.Question;
 import com.example.seersandroid.data.questionModule.QuestionnairRepository;
@@ -41,35 +40,8 @@ public class QuestionPageViewModel extends ViewModel {
     }
 
     public void getQuestionData(){
-        questionnairRepository.setListerner(getQuestionDataListener);
         questionnairRepository.getAllQuesitions();
     }
 
-    OperationListener getQuestionDataListener = new OperationListener() {
-        @Override
-        public void onSuccess(Result result) {
-            questionListResult = new QuestionListResult(((Result.Success<List<Question>>) result).getData());
-        }
-
-        @Override
-        public void onError(Result result) {
-
-        }
-
-        @Override
-        public void onPreExecution() {
-
-        }
-
-        @Override
-        public void onPostExecution() {
-
-        }
-
-        @Override
-        public void onOperationProgressUpdate(String... updateParams) {
-
-        }
-    };
 
 }

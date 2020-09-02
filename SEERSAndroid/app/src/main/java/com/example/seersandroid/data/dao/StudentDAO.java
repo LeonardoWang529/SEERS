@@ -2,6 +2,7 @@ package com.example.seersandroid.data.dao;
 
 import com.example.seersandroid.data.model.Student;
 
+import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -15,5 +16,5 @@ public interface StudentDAO {
     Call<Student> login(@Field("userName") String userName,@Field("password") String password);*/
 
     @POST("studentlogin")
-    Call<Student> login(@Query("userName") String userName, @Query("password") String password);
+    Single<Student> login(@Query("userName") String userName, @Query("password") String password);
 }

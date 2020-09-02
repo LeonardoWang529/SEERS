@@ -1,8 +1,9 @@
 package com.example.seersandroid.ViewViewModel.PersonalDashBoard;
 
-import com.example.seersandroid.data.loginModule.LoginDataSource;
 import com.example.seersandroid.data.loginModule.LoginRepository;
 import com.example.seersandroid.data.model.Student;
+
+import javax.inject.Inject;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -10,13 +11,13 @@ import androidx.lifecycle.ViewModel;
 
 public class PersonalDashBoardViewModel extends ViewModel {
 
-    private MutableLiveData<Student> mStudent;
-    private LoginRepository studnetStatus;
+    private MutableLiveData<Student> mStudent = new MutableLiveData<>();
+    private final LoginRepository studentRepository;
 
-    public PersonalDashBoardViewModel() {
-        mStudent = new MutableLiveData<>();
-        studnetStatus = LoginRepository.getInstance(new LoginDataSource(null));
-        mStudent.setValue(studnetStatus.getLoggedinUser());
+    @Inject
+    public PersonalDashBoardViewModel(LoginRepository studentRepository) {
+        this.studentRepository = studentRepository;
+        mStudent.setValue(studentRepository.getLoggedinUser());
     }
 
     public LiveData<Student> getStudent() {

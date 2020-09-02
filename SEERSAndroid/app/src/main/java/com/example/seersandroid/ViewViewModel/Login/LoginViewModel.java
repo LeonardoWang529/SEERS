@@ -3,67 +3,59 @@ package com.example.seersandroid.ViewViewModel.Login;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.schedulers.Schedulers;
 
 import android.util.Patterns;
 
-import com.example.seersandroid.Classes.OperationListener;
+import com.example.seersandroid.Utilities.scopes.AppScoped;
 import com.example.seersandroid.data.loginModule.LoginRepository;
 import com.example.seersandroid.data.Result;
 import com.example.seersandroid.data.model.Student;
 import com.example.seersandroid.R;
 
+import javax.inject.Inject;
+
 public class LoginViewModel extends ViewModel {
 
-    private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
-    private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
-    private LoginRepository loginRepository;
+    private final LoginRepository loginRepository;
+    private CompositeDisposable disposable;
+    private final MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
+    private final MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
 
-    LoginViewModel(LoginRepository loginRepository) {
+
+    @Inject
+    public LoginViewModel(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
+        disposable = new CompositeDisposable();
     }
 
     LiveData<LoginFormState> getLoginFormState() {
         return loginFormState;
     }
-
     LiveData<LoginResult> getLoginResult() {
         return loginResult;
     }
 
     public void login(String username, String password) {
-        // can be launched in a separate asynchronous job
-        loginRepository.setOperationListener(LoginListener)
-                .login(username, password);
+        disposable.add(loginRepository.getStudent(username,password)
+                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<Student>(){
+                    @Override
+                    public void onSuccess(Student student) {
+                        loginRepository.setLoggedInUser(student);
+                        loginResult.setValue(new LoginResult(new LoggedInUserView(student)));
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                }));
     }
-
-    OperationListener LoginListener = new OperationListener() {
-        @Override
-        public void onSuccess(Result result) {
-            loginRepository.setResult(result);
-            Student data = ((Result.Success<Student>) result).getData();
-            loginResult.setValue(new LoginResult(new LoggedInUserView(data)));
-        }
-
-        @Override
-        public void onError(Result result) {
-            loginResult.setValue(new LoginResult(R.string.login_failed));
-        }
-
-        @Override
-        public void onPreExecution() {
-
-        }
-
-        @Override
-        public void onPostExecution() {
-
-        }
-
-        @Override
-        public void onOperationProgressUpdate(String... updateParams) {
-
-        }
-    };
 
     public void loginDataChanged(String username, String password) {
         if (!isUserNameValid(username)) {
