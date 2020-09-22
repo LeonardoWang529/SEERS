@@ -1,10 +1,6 @@
 package com.example.seersandroid.ViewViewModel.Colleges.CollegeLists;
 
-import com.example.seersandroid.data.Result;
 import com.example.seersandroid.data.collegeModule.CollegeListRepository;
-import com.example.seersandroid.data.model.College;
-
-import java.util.List;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

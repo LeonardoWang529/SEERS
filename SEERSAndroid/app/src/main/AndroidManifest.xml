@@ -32,10 +32,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".ViewViewModel.Login.LoginActivity"
-            android:label="@string/app_name">
-        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -52,18 +48,14 @@
             android:name=".ViewViewModel.Colleges.CollegesFragment"
             android:label="@string/title_activity_colleges"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ViewViewModel.NavigationActivity.NavigationActivity"
-            android:label="@string/title_activity_navigation" />
+
 
         <activity
             android:name=".ViewViewModel.Questionnairs.QuestionnairsFragment"
             android:label="@string/title_activity_questionnairs"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ViewViewModel.SignUp.SignUpActivity"
-            android:label="@string/title_activity_sign_up" />
-        <activity
+            android:theme="@style/AppTheme.NoActionBar" />-->
+
+<!--        <activity
             android:name=".ViewViewModel.StudentID.StudentIdActivity"
             android:label="@string/title_activity_student_id" />
         <meta-data

@@ -3,11 +3,12 @@ package com.example.seersandroid.Utilities.di.component;
 import android.app.Application;
 
 import com.example.seersandroid.Utilities.di.module.ActivityBindingModule;
-import com.example.seersandroid.Utilities.di.module.ApplicationModule;
 import com.example.seersandroid.Utilities.di.module.ContextModule;
+import com.example.seersandroid.Utilities.di.module.UtilsModule;
 import com.example.seersandroid.Utilities.di.module.ViewModelModule;
 import com.example.seersandroid.Utilities.scopes.AppScoped;
 import com.example.seersandroid.base.BaseApplication;
+import com.example.seersandroid.data.source.student.StudentRepositoryModule;
 
 import dagger.BindsInstance;
 import dagger.Component;
@@ -16,7 +17,13 @@ import dagger.android.DaggerApplication;
 import dagger.android.support.AndroidSupportInjectionModule;
 
 @AppScoped
-@Component(modules = {ContextModule.class, ActivityBindingModule.class, AndroidSupportInjectionModule.class, ApplicationModule.class})
+@Component(modules = {
+        StudentRepositoryModule.class,
+        ContextModule.class,
+        UtilsModule.class,
+        ActivityBindingModule.class,
+        AndroidSupportInjectionModule.class,
+        ViewModelModule.class})
 public interface ApplicationComponent extends AndroidInjector<BaseApplication> {
 
     void inject(BaseApplication application);

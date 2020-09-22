@@ -1,6 +1,5 @@
 package com.example.seersandroid.ViewViewModel.Questionnairs;
 
-import com.example.seersandroid.data.Result;
 import com.example.seersandroid.data.model.Question;
 import com.example.seersandroid.data.questionModule.QuestionnairRepository;
 

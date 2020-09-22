@@ -23,6 +23,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.seersandroid.R;
+import com.example.seersandroid.Utilities.ViewModelFactory;
+import com.example.seersandroid.base.BaseFragment;
 import com.example.seersandroid.databinding.FragmentPichartBinding;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -40,12 +42,15 @@ import com.github.mikephil.charting.utils.MPPointF;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
-public class PiChartFragment extends Fragment implements SeekBar.OnSeekBarChangeListener,
+public class PiChartFragment extends BaseFragment implements SeekBar.OnSeekBarChangeListener,
         OnChartValueSelectedListener {
 
     private PieChart chart;
@@ -69,6 +74,13 @@ public class PiChartFragment extends Fragment implements SeekBar.OnSeekBarChange
 
     protected Typeface tfRegular;
     protected Typeface tfLight;
+
+    @Inject
+    ViewModelFactory viewModelFactory;
+    private PersonalDashBoardViewModel personalDashBoardViewModel;
+
+    @Override
+    protected int layoutRes() { return R.layout.fragment_pichart; }
 
     @Nullable
     @Override
@@ -147,6 +159,13 @@ public class PiChartFragment extends Fragment implements SeekBar.OnSeekBarChange
         chart.setEntryLabelTextSize(12f);
 
         return v;
+    }
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        personalDashBoardViewModel = new ViewModelProvider(this, viewModelFactory)
+                .get(PersonalDashBoardViewModel.class);
     }
 
     private void setData(int count, float range) {

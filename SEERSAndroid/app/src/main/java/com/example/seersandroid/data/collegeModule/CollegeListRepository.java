@@ -1,7 +1,5 @@
 package com.example.seersandroid.data.collegeModule;
 
-import com.example.seersandroid.data.Result;
-import com.example.seersandroid.data.Retrofits;
 import com.example.seersandroid.data.dao.CollegeDAO;
 import com.example.seersandroid.data.model.College;
 
@@ -14,7 +12,7 @@ import retrofit2.Response;
 public class CollegeListRepository {
     private static volatile CollegeListRepository instance;
     CollegeDAO collegeDAO;
-    Retrofits retrofits;
+
 
     public static CollegeListRepository getInstance() {
         if (instance == null) {
@@ -24,8 +22,7 @@ public class CollegeListRepository {
     }
 
     public CollegeListRepository(){
-        retrofits = Retrofits.getInstance();
-        collegeDAO = retrofits.retrofit.create(CollegeDAO.class);
+
     }
 
     public void getTwentyCollegeListData(String order){

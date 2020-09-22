@@ -5,27 +5,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.seersandroid.R;
+import com.example.seersandroid.base.BaseFragment;
 import com.example.seersandroid.databinding.FragmentCollegesBinding;
+import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+import butterknife.BindView;
 
-public class CollegesFragment extends Fragment {
+public class CollegesFragment extends BaseFragment {
 
-    private FragmentCollegesBinding binding;
+    @BindView(R.id.view_pager)
+    ViewPager viewPager;
 
-    @Nullable
+    @BindView(R.id.tabs)
+    TabLayout tabs;
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-        binding = FragmentCollegesBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+    protected int layoutRes() { return R.layout.fragment_colleges; }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         CollegeSectionsPagerAdapter sectionsPagerAdapter = new CollegeSectionsPagerAdapter(this.getContext(),
                 getActivity().getSupportFragmentManager());
-        binding.viewPager.setAdapter(sectionsPagerAdapter);
-        binding.tabs.setupWithViewPager(binding.viewPager);
-        return view;
+        viewPager.setAdapter(sectionsPagerAdapter);
+        tabs.setupWithViewPager(viewPager);
+
     }
 }

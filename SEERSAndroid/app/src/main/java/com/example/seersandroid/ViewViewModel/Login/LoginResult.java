@@ -1,5 +1,7 @@
 package com.example.seersandroid.ViewViewModel.Login;
 
+import com.example.seersandroid.data.model.Student;
+
 import androidx.annotation.Nullable;
 
 /**
@@ -7,25 +9,25 @@ import androidx.annotation.Nullable;
  */
 class LoginResult {
     @Nullable
-    private LoggedInUserView success;
+    private Student success;
     @Nullable
-    private Integer error;
+    private Throwable error;
 
-    LoginResult(@Nullable Integer error) {
+    LoginResult(@Nullable Throwable error) {
         this.error = error;
     }
 
-    LoginResult(@Nullable LoggedInUserView success) {
+    LoginResult(@Nullable Student success) {
         this.success = success;
     }
 
     @Nullable
-    LoggedInUserView getSuccess() {
+    Student getSuccess() {
         return success;
     }
 
     @Nullable
-    Integer getError() {
+    Throwable getError() {
         return error;
     }
 }

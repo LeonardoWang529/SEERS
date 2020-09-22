@@ -3,67 +3,65 @@ package com.example.seersandroid.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Data class that captures user information for logged in users retrieved from LoginRepository
- */
-public class Student implements Parcelable {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-    private int userId;
-    private String userName;
-    private String password;
-    private String name;
-    private String gender;
-    private String SAT_math;
-    private String SAT_verbal;
-    private String expense_limit;
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "student")
+public final class Student {
+    @Ignore
+    private static final long STALE_MS = 5 * 60 * 1000; // Data is stale after 5 minutes
+
+    @NonNull
+    @PrimaryKey
+    @ColumnInfo(name = "id")
+    @SerializedName("code")
+    @Expose
+    private String userId;
+
+    @ColumnInfo(name = "userName")
+    public String userName;
+
+    @ColumnInfo(name = "password")
+    public String password;
+
+    @ColumnInfo(name = "name")
+    public String name;
+
+    @ColumnInfo(name = "gender")
+    public String gender;
+
+    @ColumnInfo(name = "SAT_math")
+    public String SAT_math;
+
+    @ColumnInfo(name = "SAT_verbal")
+    public String SAT_verbal;
+
+    @ColumnInfo(name = "expense_limit")
+    public String expense_limit;
+
+    @SerializedName("time")
+    @ColumnInfo(name = "time")
+    @Expose
+    private Long timeStamp;
+
+    @ColumnInfo(name = "timeAdded")
+    @Expose
+    private Long timeStampAdded;
 
     public Student(){}
 
-    public Student(Parcel in) {
-        this.userId = in.readInt();
-        this.userName = in.readString();
-        this.password = in.readString();
-        this.name = in.readString();
-        this.gender = in.readString();
-        this.SAT_math = in.readString();
-        this.SAT_verbal = in.readString();
-        this.expense_limit = in.readString();
-    }
 
-    public static final Creator<Student> CREATOR = new Creator<Student>() {
-        @Override
-        public Student createFromParcel(Parcel in) {
-            return new Student(in);
-        }
-
-        @Override
-        public Student[] newArray(int size) {
-            return new Student[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flag) {
-        dest.writeInt(userId);
-        dest.writeString(userName);
-        dest.writeString(password);
-        dest.writeString(name);
-        dest.writeString(gender);
-        dest.writeString(SAT_math);
-        dest.writeString(SAT_verbal);
-        dest.writeString(expense_limit);
-    }
-
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -123,5 +121,23 @@ public class Student implements Parcelable {
         this.expense_limit = expense_limit;
     }
 
+    public boolean isUpToDate() {
+        return System.currentTimeMillis() - timeStampAdded < STALE_MS;
+    }
 
+    public Long getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Long timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public Long getTimeStampAdded() {
+        return timeStampAdded;
+    }
+
+    public void setTimeStampAdded(Long timeStampAdded) {
+        this.timeStampAdded = timeStampAdded;
+    }
 }
