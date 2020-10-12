@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.example.seersandroid.MainActivity;
 import com.example.seersandroid.R;
 import com.example.seersandroid.Utilities.ViewModelFactory;
 import com.example.seersandroid.ViewViewModel.StudentID.StudentIdFragment;
@@ -71,7 +72,8 @@ public class PersonalDashBoardFragment extends BaseFragment {
                 getBaseActivity().getSupportFragmentManager().beginTransaction()
                         .add(R.id.main_dashboard, studentIdFragment)
                         .commit();*/
-                onButtonShowPopupWindowClick(view.getRootView());
+                //onButtonShowPopupWindowClick(view.getRootView());
+                ((MainActivity)getActivity()).addFragmentToActivity(StudentIdFragment.class,R.id.screenContainer);
             }
         });
     }

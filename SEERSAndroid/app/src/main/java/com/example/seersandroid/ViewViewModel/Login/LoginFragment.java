@@ -1,5 +1,6 @@
 package com.example.seersandroid.ViewViewModel.Login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -138,7 +139,7 @@ public class LoginFragment extends BaseFragment {
         // TODO : initiate successful logged in experience
         //String welcome = getString(R.string.welcome) + model.getDisplayName();
         //Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-/*        Intent i = new Intent(getBaseActivity(), NavigationActivity.class);
+/*        Intent i = new Intent(getBaseActivity(), NavigationFragment.class);
         startActivity(i);*/
 
         getBaseActivity().getSupportFragmentManager().beginTransaction().replace(R.id.screenContainer, new NavigationFragment())

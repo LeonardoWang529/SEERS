@@ -1,5 +1,7 @@
 package com.example.seersandroid;
 
+import com.example.seersandroid.ViewViewModel.Colleges.CollegeLists.CollegeListFragment;
+import com.example.seersandroid.ViewViewModel.Colleges.CollegeMap.CollegeMapsFragment;
 import com.example.seersandroid.ViewViewModel.Colleges.CollegesFragment;
 import com.example.seersandroid.ViewViewModel.Login.LoginFragment;
 import com.example.seersandroid.ViewViewModel.Login.SignUpFragment;
@@ -38,4 +40,10 @@ public abstract class MainFragmentBindingModule {
 
     @ContributesAndroidInjector
     abstract CollegesFragment provideCollegesFragment();
+
+    @ContributesAndroidInjector
+    abstract CollegeListFragment provideCollegeListFragment();
+
+    @ContributesAndroidInjector
+    abstract CollegeMapsFragment provideCollegeMapsFragment();
 }

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.seersandroid.R;
+import com.example.seersandroid.base.BaseFragment;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -50,8 +52,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class CollegeMapsFragment extends Fragment implements GoogleMap.OnMyLocationButtonClickListener,
-        GoogleMap.OnMyLocationClickListener,OnMapReadyCallback{
+public class CollegeMapsFragment extends BaseFragment implements OnMapReadyCallback{
 
     private GoogleMap mMap;
     final int LOCATION_PERMISSION_REQUEST_CODE = 1;
@@ -68,7 +69,8 @@ public class CollegeMapsFragment extends Fragment implements GoogleMap.OnMyLocat
 
     AutocompleteSupportFragment autocompleteFragment;
 
-    MapView mapView;
+    /*@BindView(R.id.map)
+    Fragment mapView;*/
 
     List<Place> SuggestedPlace = new ArrayList<>();
 
@@ -76,70 +78,31 @@ public class CollegeMapsFragment extends Fragment implements GoogleMap.OnMyLocat
 
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_college_maps, container, false);
-
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
-
-
-        mapView = v.findViewById(R.id.mapview);
-        mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(this);
-
-        //place_input = v.findViewById(R.id.place_input);
-        //recyclerView = v.findViewById(R.id.rvAnimals);
-
-        // Initialize the AutocompleteSupportFragment.
-        //autocompleteFragment = (AutocompleteSupportFragment) getChildFragmentManager().findFragmentById(R.id.autocomplete_fragment);
-        // Specify the types of place data to return.
-        //autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME));
-
-
-        Places.initialize(getActivity(), getResources().getString(R.string.google_maps_key));
-        placesClient = Places.createClient(getActivity());
-
-
-        //searchBarHandle();
-
-        return v;
+    protected int layoutRes() {
+        return R.layout.fragment_college_maps;
     }
 
     @Override
-    public void onResume() {
-        mapView.onResume();
-        super.onResume();
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_college_maps, null, false);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+        return view;
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapView.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-    }
-
-    @Override
-    public boolean onMyLocationButtonClick() {
-        return false;
-    }
-
-    @Override
-    public void onMyLocationClick(@NonNull Location location) {
-
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
 
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions()
+                .position(sydney)
+                .title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }

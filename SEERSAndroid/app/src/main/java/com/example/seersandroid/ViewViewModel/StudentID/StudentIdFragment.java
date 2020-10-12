@@ -11,7 +11,6 @@ import com.example.seersandroid.ViewViewModel.PersonalDashBoard.PersonalDashBoar
 import com.example.seersandroid.base.BaseFragment;
 import com.example.seersandroid.data.model.Student;
 import com.google.android.material.textfield.TextInputEditText;
-import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 

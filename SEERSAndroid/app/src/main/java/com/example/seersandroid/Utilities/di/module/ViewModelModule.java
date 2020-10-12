@@ -2,6 +2,8 @@ package com.example.seersandroid.Utilities.di.module;
 
 import com.example.seersandroid.Utilities.ViewModelFactory;
 import com.example.seersandroid.Utilities.di.util.ViewModelKey;
+import com.example.seersandroid.Utilities.scopes.AppScoped;
+import com.example.seersandroid.ViewViewModel.Colleges.CollegeLists.CollegeListViewModel;
 import com.example.seersandroid.ViewViewModel.Login.StudentViewModel;
 import com.example.seersandroid.ViewViewModel.PersonalDashBoard.PersonalDashBoardViewModel;
 
@@ -25,5 +27,11 @@ public abstract class ViewModelModule {
     abstract ViewModel bindPersonalDashBoardViewModel(PersonalDashBoardViewModel personalDashBoardViewModel);
 
     @Binds
+    @IntoMap
+    @ViewModelKey(CollegeListViewModel.class)
+    abstract ViewModel bindCollegeListViewModel(CollegeListViewModel collegeListViewModel);
+
+    @Binds
+    @AppScoped
     abstract ViewModelProvider.Factory bindViewModelFactory(ViewModelFactory factory);
 }

@@ -11,9 +11,9 @@ public class CollegeListResult {
     @Nullable
     private List<College> success;
     @Nullable
-    private Integer error;
+    private String error;
 
-    CollegeListResult(@Nullable Integer error) {
+    CollegeListResult(@Nullable String error) {
         this.error = error;
     }
 
@@ -27,7 +27,7 @@ public class CollegeListResult {
     }
 
     @Nullable
-    Integer getError() {
+    String getError() {
         return error;
     }
 }

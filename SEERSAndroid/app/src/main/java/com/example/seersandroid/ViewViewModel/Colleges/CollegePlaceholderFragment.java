@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.seersandroid.MainActivity;
 import com.example.seersandroid.R;
 import com.example.seersandroid.ViewViewModel.Colleges.CollegeLists.CollegeListFragment;
 import com.example.seersandroid.ViewViewModel.Colleges.CollegeMap.CollegeMapsFragment;

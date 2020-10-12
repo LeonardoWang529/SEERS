@@ -19,7 +19,6 @@ public class College implements Parcelable {
     String social_scale;
     String quality_of_life_scale;
 
-
     protected College(Parcel in) {
         name = in.readString();
         state = in.readString();
