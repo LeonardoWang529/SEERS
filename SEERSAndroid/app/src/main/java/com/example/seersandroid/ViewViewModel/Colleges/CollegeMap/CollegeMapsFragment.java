@@ -55,26 +55,6 @@ import java.util.List;
 public class CollegeMapsFragment extends BaseFragment implements OnMapReadyCallback{
 
     private GoogleMap mMap;
-    final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 2;
-
-    boolean mLocationPermissionGranted = false;
-    Location mLastKnownLocation = null;
-    private LatLngBounds AUSTRALIA = new LatLngBounds(
-            new LatLng(-44, 113), new LatLng(-10, 154));
-
-    FusedLocationProviderClient mFusedLocationProviderClient = null;
-
-    PlacesClient placesClient;
-
-    AutocompleteSupportFragment autocompleteFragment;
-
-    /*@BindView(R.id.map)
-    Fragment mapView;*/
-
-    List<Place> SuggestedPlace = new ArrayList<>();
-
-    EditText place_input;
 
 
     @Override
@@ -99,7 +79,7 @@ public class CollegeMapsFragment extends BaseFragment implements OnMapReadyCallb
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+        LatLng sydney = new LatLng(37.3352, -121.8811);
         mMap.addMarker(new MarkerOptions()
                 .position(sydney)
                 .title("Marker in Sydney"));

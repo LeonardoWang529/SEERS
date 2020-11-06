@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.example.seersandroid.MainActivity;
 import com.example.seersandroid.R;
 import com.example.seersandroid.Utilities.ViewModelFactory;
+import com.example.seersandroid.Utilities.scopes.ActivityScoped;
+import com.example.seersandroid.ViewViewModel.Navigation.NavigationActivity;
 import com.example.seersandroid.ViewViewModel.StudentID.StudentIdFragment;
 import com.example.seersandroid.base.BaseFragment;
 import com.example.seersandroid.data.model.Student;
@@ -33,7 +35,7 @@ import butterknife.BindView;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
-
+@ActivityScoped
 public class PersonalDashBoardFragment extends BaseFragment {
 
     @BindView(R.id.avater) ImageView avater;
@@ -73,7 +75,7 @@ public class PersonalDashBoardFragment extends BaseFragment {
                         .add(R.id.main_dashboard, studentIdFragment)
                         .commit();*/
                 //onButtonShowPopupWindowClick(view.getRootView());
-                ((MainActivity)getActivity()).addFragmentToActivity(StudentIdFragment.class,R.id.screenContainer);
+                ((NavigationActivity)getActivity()).replaceFragment(StudentIdFragment.class, "student");
             }
         });
     }

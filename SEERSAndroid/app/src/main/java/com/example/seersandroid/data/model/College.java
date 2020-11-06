@@ -3,7 +3,7 @@ package com.example.seersandroid.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class College implements Parcelable {
+public class College {
     String name;
     String state;
     String control;
@@ -19,57 +19,11 @@ public class College implements Parcelable {
     String social_scale;
     String quality_of_life_scale;
 
-    protected College(Parcel in) {
-        name = in.readString();
-        state = in.readString();
-        control = in.readString();
-        location = in.readString();
-        percent_admittance = in.readString();
-        no_applicats = in.readString();
-        sat_vabal = in.readString();
-        sat_math = in.readString();
-        expresses = in.readString();
-        percent_financial_aid = in.readString();
-        male_female_ratio = in.readString();
-        academics_scale = in.readString();
-        social_scale = in.readString();
-        quality_of_life_scale = in.readString();
+    public College(String name, String state, String location){
+        this.name = name;
+        this.state = state;
+        this.location = location;
     }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeString(state);
-        dest.writeString(control);
-        dest.writeString(location);
-        dest.writeString(percent_admittance);
-        dest.writeString(no_applicats);
-        dest.writeString(sat_vabal);
-        dest.writeString(sat_math);
-        dest.writeString(expresses);
-        dest.writeString(percent_financial_aid);
-        dest.writeString(male_female_ratio);
-        dest.writeString(academics_scale);
-        dest.writeString(social_scale);
-        dest.writeString(quality_of_life_scale);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<College> CREATOR = new Creator<College>() {
-        @Override
-        public College createFromParcel(Parcel in) {
-            return new College(in);
-        }
-
-        @Override
-        public College[] newArray(int size) {
-            return new College[size];
-        }
-    };
 
     public String getName() {
         return name;

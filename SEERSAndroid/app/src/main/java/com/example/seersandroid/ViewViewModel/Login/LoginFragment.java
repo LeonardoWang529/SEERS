@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.seersandroid.R;
 import com.example.seersandroid.Utilities.ViewModelFactory;
-import com.example.seersandroid.ViewViewModel.Navigation.NavigationFragment;
+import com.example.seersandroid.ViewViewModel.Navigation.NavigationActivity;
 import com.example.seersandroid.base.BaseFragment;
 import com.example.seersandroid.data.model.Student;
 
@@ -139,11 +139,11 @@ public class LoginFragment extends BaseFragment {
         // TODO : initiate successful logged in experience
         //String welcome = getString(R.string.welcome) + model.getDisplayName();
         //Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-/*        Intent i = new Intent(getBaseActivity(), NavigationFragment.class);
-        startActivity(i);*/
+        Intent i = new Intent(getBaseActivity(), NavigationActivity.class);
+        startActivity(i);
 
-        getBaseActivity().getSupportFragmentManager().beginTransaction().replace(R.id.screenContainer, new NavigationFragment())
-                .addToBackStack(null).commit();
+/*        getBaseActivity().getSupportFragmentManager().beginTransaction().replace(R.id.screenContainer, new NavigationFragment())
+                .addToBackStack(null).commit();*/
     }
 
     private void showLoginFailed(Throwable errorString) {

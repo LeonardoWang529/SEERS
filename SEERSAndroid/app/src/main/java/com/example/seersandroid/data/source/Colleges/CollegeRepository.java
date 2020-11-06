@@ -35,6 +35,19 @@ public class CollegeRepository {
     @NonNull
     public Single<List<College>> geColleges() {
         //return mCollegeRemoteDataSource.getColleges().doOnSuccess(res -> collegeList.addAll(res));
+        createCollegeList();
         return Single.just(collegeList);
+    }
+
+    public void createCollegeList(){
+        College c = new College("San Jose State University","CA","1 Washington Sq, San Jose, CA 95192");
+        College c1 = new College("San Jose State University","CA","1 Washington Sq, San Jose, CA 95192");
+        College c2 = new College("San Jose State University","CA","1 Washington Sq, San Jose, CA 95192");
+        College c3 = new College("San Jose State University","CA","1 Washington Sq, San Jose, CA 95192");
+
+        collegeList.add(c);
+        collegeList.add(c1);
+        collegeList.add(c2);
+        collegeList.add(c3);
     }
 }

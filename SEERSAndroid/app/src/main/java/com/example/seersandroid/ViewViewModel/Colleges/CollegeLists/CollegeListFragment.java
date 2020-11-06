@@ -31,7 +31,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 
-public class CollegeListFragment extends BaseFragment {
+public class CollegeListFragment extends BaseFragment implements OnItemClickListener{
 
 
     @BindView(R.id.collegeRecycleView)
@@ -53,7 +53,7 @@ public class CollegeListFragment extends BaseFragment {
         collegeRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
         collegeListAdapter = new CollegeListAdapter();
         collegeRecycleView.setAdapter(collegeListAdapter);
-        collegeListAdapter.setListerner(itemClickListener);
+        collegeListAdapter.setListerner(this);
         collegeListViewModel = viewModelFactory.create(CollegeListViewModel.class);
         collegeListViewModel.getCollectData();
         collegeListViewModel.getTwentyCollegeLiveData().observe(getActivity(), new Observer<CollegeListResult>() {
@@ -76,18 +76,8 @@ public class CollegeListFragment extends BaseFragment {
 
     }
 
-    private  OnItemClickListener itemClickListener = new OnItemClickListener() {
-        @Override
-        public void onClick(Object o) {
-            Bundle bundle = new Bundle();
-            bundle.putParcelable("SelectCollege", (College)o);
+    @Override
+    public void onClick(Object o) {
 
-            CollegeItemFragment collegeItemFragment = new CollegeItemFragment();
-            collegeItemFragment.setArguments(bundle);
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragmentContainer, collegeItemFragment)
-                    .commit();
-            ((MainActivity)getActivity()).addFragmentToActivity(CollegeItemFragment.class,R.id.screenContainer);
-        }
-    };
+    }
 }

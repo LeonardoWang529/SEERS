@@ -23,7 +23,7 @@ public abstract class BaseActivity extends DaggerAppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    public void addFragmentToActivity(Class fragmentClass, int frameId) {
+    public void addFragmentToActivity(Class fragmentClass, int frameId, @Nullable String fragmentName) {
         Fragment fragment = null;
         try{
             fragment = (Fragment) fragmentClass.newInstance();
@@ -31,6 +31,6 @@ public abstract class BaseActivity extends DaggerAppCompatActivity {
             e.printStackTrace();
         }
         getSupportFragmentManager().beginTransaction().replace(frameId,fragment)
-                .addToBackStack(null).commit();
+                .addToBackStack(fragmentName).commit();
     }
 }

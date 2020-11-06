@@ -1,27 +1,29 @@
 package com.example.seersandroid.ViewViewModel.Recommendation;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
-import com.example.seersandroid.databinding.FragmentRecommendationBinding;
+import com.example.seersandroid.R;
+import com.example.seersandroid.ViewViewModel.Navigation.NavigationActivity;
+import com.example.seersandroid.base.BaseActivity;
+import com.example.seersandroid.base.BaseFragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
-public class RecommendationFragment extends Fragment {
+public class RecommendationFragment extends BaseFragment {
 
-    FragmentRecommendationBinding binding;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-        binding = FragmentRecommendationBinding.inflate(getLayoutInflater());
-        View v = binding.getRoot();
+    protected int layoutRes() {
+        return R.layout.fragment_recommendation;
+    }
 
-        return v;
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //((BaseActivity)getActivity()).addFragmentToActivity(MBTIFragment.class, R.id.mbti_container,"mbti");
+        //((BaseActivity)getActivity()).addFragmentToActivity(UniversityRecFragment.class, R.id.recom_container,"mbti");
     }
 }
