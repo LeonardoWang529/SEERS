@@ -105,7 +105,7 @@ public class LoginFragment extends BaseFragment {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    studentViewModel.saveStudent();
+                    //studentViewModel.saveStudent();
                     studentViewModel.login(username.getText().toString(),
                             password.getText().toString());
                 }
@@ -117,7 +117,7 @@ public class LoginFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 //loading.setVisibility(View.VISIBLE);
-                studentViewModel.saveStudent();
+                //studentViewModel.saveStudent();
 
                 studentViewModel.login(username.getText().toString(),
                         password.getText().toString());

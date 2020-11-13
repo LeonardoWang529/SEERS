@@ -1,6 +1,7 @@
 package com.example.seersandroid.data.source.student.remote;
 
 import com.example.seersandroid.Utilities.scopes.AppScoped;
+import com.example.seersandroid.data.RequestModel.RequestLogin;
 import com.example.seersandroid.data.model.Student;
 import com.example.seersandroid.data.source.student.StudentDataSource;
 
@@ -23,7 +24,8 @@ public class StudentRemoteDataSource implements StudentDataSource {
     @NonNull
     @Override
     public Single<Student> getStudent(@NonNull String userName, @NonNull String password) {
-        return null;
+        RequestLogin requestLogin = new RequestLogin(userName,password);
+        return mStudentApiService.login(requestLogin);
     }
 
     @Override

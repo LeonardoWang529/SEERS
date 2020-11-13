@@ -123,8 +123,8 @@ public class PersonalDashBoardFragment extends BaseFragment {
     }
 
     public void setPersonalAvatorandName(Student s){
-        name.setText(s.getName());
-        localtion.setText(s.getName());
+        name.setText(s.getFirstName()+ " " + s.getLastName());
+        localtion.setText("San Jose");
         //binding.avater.setImageBitmap();
     }
 

@@ -47,20 +47,6 @@ public class StudentViewModel extends ViewModel {
                 ));
     }
 
-    public void saveStudent(){
-        Student s = new Student();
-        s.setUserId("0");
-        s.setUserName("leo9081");
-        s.setPassword("123456");
-        s.setName("Yi_Wang");
-        s.setGender("male");
-        s.setSAT_math("300");
-        s.setSAT_verbal("300");
-        s.setExpense_limit("10000000");
-
-        mRepository.saveStudent(s);
-    }
-
     public void loginDataChanged(String username, String password) {
         if (!isUserNameValid(username)) {
             loginFormState.setValue(new LoginFormState(R.string.invalid_username, null));
@@ -85,7 +71,7 @@ public class StudentViewModel extends ViewModel {
 
     // A placeholder password validation check
     private boolean isPasswordValid(String password) {
-        return password != null && password.trim().length() > 5;
+        return password != null && password.trim().length() >= 4;
     }
 
     @Override

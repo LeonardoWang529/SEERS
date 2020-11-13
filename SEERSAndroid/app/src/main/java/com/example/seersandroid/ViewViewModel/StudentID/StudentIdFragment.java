@@ -51,7 +51,7 @@ public class StudentIdFragment extends BaseFragment {
     public void setStudentInfo(Student student){
         //schoolName.setText();
         //Picasso.get().load(student.getAvater).resize(100,100).into(userImage);
-        userName.setText(student.getName());
+        userName.setText(student.getFirstName());
     }
 
 }

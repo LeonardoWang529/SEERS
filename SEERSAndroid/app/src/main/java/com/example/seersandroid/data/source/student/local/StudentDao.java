@@ -19,7 +19,7 @@ public interface StudentDao {
      * @param userName the Student userName.
      * @return the Student with userName
      */
-    @Query("SELECT * FROM student WHERE userName = :userName")
+    @Query("SELECT * FROM student WHERE email = :userName")
     Single<Student> getStudentByUserName(String userName);
 
     /**

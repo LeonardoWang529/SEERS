@@ -6,6 +6,8 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -20,38 +22,72 @@ public final class Student {
     @NonNull
     @PrimaryKey
     @ColumnInfo(name = "id")
-    @SerializedName("code")
+    @SerializedName("userId")
     @Expose
     private String userId;
 
-    @ColumnInfo(name = "userName")
+    @ColumnInfo(name = "email")
+    @SerializedName("email")
     public String userName;
 
     @ColumnInfo(name = "password")
+    @SerializedName("password")
     public String password;
 
-    @ColumnInfo(name = "name")
-    public String name;
+    @ColumnInfo(name = "firstName")
+    @SerializedName("firstName")
+    public String firstName;
+
+    @ColumnInfo(name = "lastName")
+    @SerializedName("lastName")
+    public String lastName;
 
     @ColumnInfo(name = "gender")
+    @SerializedName("gender")
     public String gender;
 
-    @ColumnInfo(name = "SAT_math")
+    @ColumnInfo(name = "status")
+    @SerializedName("status")
+    public String status;
+
+    @ColumnInfo(name = "schoolName")
+    @SerializedName("schoolName")
+    public String schoolName;
+
+    @ColumnInfo(name = "currentId")
+    @SerializedName("currentId")
+    public String currentId;
+
+    @ColumnInfo(name = "age")
+    @SerializedName("age")
+    public String age;
+
+    @ColumnInfo(name = "gpa")
+    @SerializedName("gpa")
+    public String gpa;
+
+    @ColumnInfo(name = "act")
+    @SerializedName("act")
+    public String act;
+
+    @ColumnInfo(name = "sat_math")
+    @SerializedName("sat_math")
     public String SAT_math;
 
-    @ColumnInfo(name = "SAT_verbal")
-    public String SAT_verbal;
+    @ColumnInfo(name = "sat_reading")
+    @SerializedName("sat_reading")
+    public String sat_reading;
 
     @ColumnInfo(name = "expense_limit")
+    @SerializedName("expense_limit")
     public String expense_limit;
 
-    @SerializedName("time")
-    @ColumnInfo(name = "time")
-    @Expose
+    @ColumnInfo(name = "sat_writing")
+    @SerializedName("sat_writing")
+    public String sat_writing;
+
     private Long timeStamp;
 
-    @ColumnInfo(name = "timeAdded")
-    @Expose
     private Long timeStampAdded;
 
     public Student(){}
@@ -81,14 +117,6 @@ public final class Student {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getGender() {
         return gender;
     }
@@ -103,14 +131,6 @@ public final class Student {
 
     public void setSAT_math(String SAT_math) {
         this.SAT_math = SAT_math;
-    }
-
-    public String getSAT_verbal() {
-        return SAT_verbal;
-    }
-
-    public void setSAT_verbal(String SAT_verbal) {
-        this.SAT_verbal = SAT_verbal;
     }
 
     public String getExpense_limit() {
@@ -139,5 +159,85 @@ public final class Student {
 
     public void setTimeStampAdded(Long timeStampAdded) {
         this.timeStampAdded = timeStampAdded;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
+
+    public String getCurrentId() {
+        return currentId;
+    }
+
+    public void setCurrentId(String currentId) {
+        this.currentId = currentId;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(String gpa) {
+        this.gpa = gpa;
+    }
+
+    public String getAct() {
+        return act;
+    }
+
+    public void setAct(String act) {
+        this.act = act;
+    }
+
+    public String getSat_reading() {
+        return sat_reading;
+    }
+
+    public void setSat_reading(String sat_reading) {
+        this.sat_reading = sat_reading;
+    }
+
+    public String getSat_writing() {
+        return sat_writing;
+    }
+
+    public void setSat_writing(String sat_writing) {
+        this.sat_writing = sat_writing;
     }
 }

@@ -15,33 +15,26 @@ import io.reactivex.Single;
 public class StudentRepository implements StudentDataSource {
 
     StudentDataSource mStudentsRemoteDataSource;
-    StudentDataSource mStudentsLocalDataSource;
+    //StudentDataSource mStudentsLocalDataSource;
     OnlineChecker mOnlineChecker;
-    private Student student = null;
+    private Student mStudent = null;
 
     @Inject
     public StudentRepository(@Remote StudentDataSource studentsRemoteDataSource,
-                             @Local StudentDataSource studentsLocalDataSource,
                              OnlineChecker onlineChecker){
         mStudentsRemoteDataSource = studentsRemoteDataSource;
-        mStudentsLocalDataSource = studentsLocalDataSource;
         mOnlineChecker = onlineChecker;
     }
 
     @NonNull
     @Override
     public Single<Student> getStudent(@NonNull String userName, @NonNull String password) {
-        return mStudentsLocalDataSource.getStudent(userName,password)
-                .flatMap(data -> {
-/*                    if(mOnlineChecker.isOnline() && (data == null || isStale(data))){
-                        return getFreshStudnet(userName,password);
-                    }*/
-                   return Single.just(data);
-                }).map(data -> student = data);
+        return mStudentsRemoteDataSource.getStudent(userName,password).
+                doOnSuccess(this::saveStudent);
     }
 
     public Student getStudent(){
-        return student;
+        return mStudent;
     }
 
     @Override
@@ -51,8 +44,9 @@ public class StudentRepository implements StudentDataSource {
 
     @Override
     public void saveStudent(@NonNull Student student) {
+        mStudent = student;
         //checkNotNull()
-        mStudentsLocalDataSource.saveStudent(student);
+        //mStudentsLocalDataSource.saveStudent(student);
         //mStudentsRemoteDataSource.saveStudent(student);
     }
 
