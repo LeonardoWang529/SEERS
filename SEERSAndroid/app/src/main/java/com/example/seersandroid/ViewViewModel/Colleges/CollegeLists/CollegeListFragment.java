@@ -55,7 +55,7 @@ public class CollegeListFragment extends BaseFragment implements OnItemClickList
         collegeRecycleView.setAdapter(collegeListAdapter);
         collegeListAdapter.setListerner(this);
         collegeListViewModel = viewModelFactory.create(CollegeListViewModel.class);
-        collegeListViewModel.getCollectData();
+
         collegeListViewModel.getTwentyCollegeLiveData().observe(getActivity(), new Observer<CollegeListResult>() {
             @Override
             public void onChanged(CollegeListResult collegeListResult) {
@@ -65,15 +65,20 @@ public class CollegeListFragment extends BaseFragment implements OnItemClickList
                 }
                 if (collegeListResult.getSuccess() != null) {
                     //updateUiWithUser(collegeListResult.getSuccess());
+                    collegeListAdapter.clearCollegeList();
                     collegeListAdapter.setCollegeList(collegeListResult.getSuccess());
                 }
                 getActivity().setResult(Activity.RESULT_OK);
 
-                //Complete and destroy login activity once successful
-                //getActivity().finish();
             }
         });
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        collegeListViewModel.getCollectData();
     }
 
     @Override

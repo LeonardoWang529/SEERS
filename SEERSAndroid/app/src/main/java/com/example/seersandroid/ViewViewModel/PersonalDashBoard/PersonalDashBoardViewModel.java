@@ -20,7 +20,7 @@ public class PersonalDashBoardViewModel extends ViewModel {
     @Inject
     public PersonalDashBoardViewModel(@NonNull StudentRepository studentRepository) {
         mRepository = studentRepository;
-        studentMutableLiveData.setValue(mRepository.getStudent());
+        studentMutableLiveData.setValue(mRepository.getCurrentStudent());
     }
 
     public LiveData<Student> getStudent() {

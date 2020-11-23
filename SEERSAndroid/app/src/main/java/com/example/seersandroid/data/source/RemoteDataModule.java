@@ -2,6 +2,7 @@ package com.example.seersandroid.data.source;
 
 import com.example.seersandroid.Utilities.scopes.AppScoped;
 import com.example.seersandroid.data.source.Colleges.remote.CollegeApiService;
+import com.example.seersandroid.data.source.Recommendation.remote.RecommendationApiService;
 import com.example.seersandroid.data.source.student.remote.StudentApiService;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -28,6 +29,12 @@ public class RemoteDataModule {
     @Provides
     CollegeApiService provideCollegeApiService(Retrofit retrofit) {
         return retrofit.create(CollegeApiService.class);
+    }
+
+    @AppScoped
+    @Provides
+    RecommendationApiService provideRecommendationApiService(Retrofit retrofit) {
+        return retrofit.create(RecommendationApiService.class);
     }
 
     @Provides

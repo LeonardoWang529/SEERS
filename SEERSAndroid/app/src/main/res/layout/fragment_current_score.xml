@@ -63,19 +63,16 @@
     <LinearLayout
         android:id="@+id/last_reading_grade"
         android:layout_width="wrap_content"
-        android:layout_height="192dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:orientation="vertical"
         app:layout_constraintLeft_toRightOf="@+id/last_math_grade">
 
-        <!--        <fragment
-            android:id="@+id/piChartFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>-->
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/chart" />
-        <!--
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/piCharFragmentContainer"
+            android:layout_width="200dp"
+            android:layout_height="175dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,7 +84,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/orange"
             android:layout_marginLeft="30dp"
-            android:text="Growth exceed"/>-->
+            android:text="Growth exceed"/>
 
 
     </LinearLayout>

@@ -86,6 +86,10 @@ public final class Student {
     @SerializedName("sat_writing")
     public String sat_writing;
 
+    @ColumnInfo(name = "token")
+    @SerializedName("token")
+    public String token;
+
     private Long timeStamp;
 
     private Long timeStampAdded;
@@ -239,5 +243,17 @@ public final class Student {
 
     public void setSat_writing(String sat_writing) {
         this.sat_writing = sat_writing;
+    }
+
+    public static long getStaleMs() {
+        return STALE_MS;
+    }
+
+    public String getToken() {
+        return "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMyIsIlJvbGVzIjpbIlN0dWRlbnQiXSwiZXhwIjoxNjA2MDg4NDQ1fQ.M9D5Y_7YocCRW9R6orUsOmOhTBPvFzi8oao0N_gHYpi3W9T7ZpWMOHNO4Jj3gEW3lYhNH2puzY5zp4UzRR6LoA";
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

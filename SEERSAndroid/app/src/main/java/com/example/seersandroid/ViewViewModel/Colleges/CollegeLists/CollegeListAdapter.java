@@ -31,6 +31,11 @@ public class CollegeListAdapter extends
         notifyDataSetChanged();
     }
 
+    public void clearCollegeList(){
+        collegeList = new ArrayList<>();
+        notifyDataSetChanged();
+    }
+
     @Override
     public void setListerner(OnItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;

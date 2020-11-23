@@ -26,7 +26,7 @@
     <string name="title_activity_colleges">CollegesActivity</string>
     <string name="title_activity_college_maps">Map</string>
 
-
+    <string name="cannot_find_current_location_text">Cannot find current location</string>
     <string name="shr_hint_username">Username</string>
     <string name="shr_hint_password">Password</string>
 
@@ -35,7 +35,7 @@
     <string name="forget_Password">Forget Password</string>
     <string name="action_sign_up_short">Sign up</string>
 
-
+    <string name="address_not_found_text">Address not found.</string>
 
     <string name="cat_bottomappbar_title">Bottom App Bar</string>
     <string name="cat_bottomappbar_description">

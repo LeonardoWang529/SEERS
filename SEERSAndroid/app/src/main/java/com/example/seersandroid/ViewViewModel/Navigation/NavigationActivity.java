@@ -1,5 +1,7 @@
 package com.example.seersandroid.ViewViewModel.Navigation;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -16,9 +18,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.app.ActivityCompat;
 import butterknife.BindView;
 
 public class NavigationActivity extends BaseActivity {
@@ -69,6 +73,8 @@ public class NavigationActivity extends BaseActivity {
         bar.setHideOnScroll(true);
         bar.setFabAnimationMode(BottomAppBar.FAB_ANIMATION_MODE_SLIDE);
         replaceFragment(PersonalDashBoardFragment.class,"dashboard");
+
+        startLocationTracker();
     }
 
     public void replaceFragment(Class fragmentClass, String fragmentName){
@@ -111,6 +117,31 @@ public class NavigationActivity extends BaseActivity {
             default:
                 replaceFragment(PersonalDashBoardFragment.class, "dashboard");
                 break;
+        }
+    }
+
+    public void startLocationTracker(){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermission();
+        }
+    }
+
+    private void requestPermission(){
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},
+                1);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 1) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+
+            }
         }
     }
 }

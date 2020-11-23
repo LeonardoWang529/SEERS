@@ -33,7 +33,7 @@ public class StudentRepository implements StudentDataSource {
                 doOnSuccess(this::saveStudent);
     }
 
-    public Student getStudent(){
+    public Student getCurrentStudent(){
         return mStudent;
     }
 

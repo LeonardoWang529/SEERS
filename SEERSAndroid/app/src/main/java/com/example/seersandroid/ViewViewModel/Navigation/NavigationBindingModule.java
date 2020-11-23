@@ -7,10 +7,13 @@ import com.example.seersandroid.Utilities.scopes.FragmentScoped;
 import com.example.seersandroid.ViewViewModel.Colleges.CollegeLists.CollegeListFragment;
 import com.example.seersandroid.ViewViewModel.Colleges.CollegeMap.CollegeMapsFragment;
 import com.example.seersandroid.ViewViewModel.Colleges.CollegesFragment;
+import com.example.seersandroid.ViewViewModel.PersonalDashBoard.CurrentScoreFragment;
 import com.example.seersandroid.ViewViewModel.PersonalDashBoard.PassScoreFragment;
 import com.example.seersandroid.ViewViewModel.PersonalDashBoard.PersonalDashBoardFragment;
 import com.example.seersandroid.ViewViewModel.PersonalDashBoard.PiChartFragment;
+import com.example.seersandroid.ViewViewModel.Recommendation.MBTIFragment;
 import com.example.seersandroid.ViewViewModel.Recommendation.RecommendationFragment;
+import com.example.seersandroid.ViewViewModel.Recommendation.UniversityRecFragment;
 import com.example.seersandroid.ViewViewModel.StudentID.StudentIdFragment;
 
 import dagger.Module;
@@ -31,6 +34,11 @@ public class NavigationBindingModule {
         @FragmentScoped
         @ContributesAndroidInjector
         abstract PersonalDashBoardFragment providePersonalDashBoardFragment();
+
+        @FragmentScoped
+        @ContributesAndroidInjector
+        abstract CurrentScoreFragment provideCurrentScoreFragment();
+
         @FragmentScoped
         @ContributesAndroidInjector
         abstract PassScoreFragment providePassScoreFragment();
@@ -53,6 +61,14 @@ public class NavigationBindingModule {
         @FragmentScoped
         @ContributesAndroidInjector
         abstract RecommendationFragment provideRecommendationFragment();
+
+        @FragmentScoped
+        @ContributesAndroidInjector
+        abstract MBTIFragment provideMBTIFragment();
+
+        @FragmentScoped
+        @ContributesAndroidInjector
+        abstract UniversityRecFragment provideUniversityRecFragment();
     }
 
 }

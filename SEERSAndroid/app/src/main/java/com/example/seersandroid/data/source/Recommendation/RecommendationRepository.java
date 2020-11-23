@@ -1,13 +1,11 @@
-package com.example.seersandroid.data.source.Colleges;
+package com.example.seersandroid.data.source.Recommendation;
 
 import com.example.seersandroid.Utilities.ConnectivityUtils.OnlineChecker;
 import com.example.seersandroid.Utilities.scopes.AppScoped;
 import com.example.seersandroid.data.model.College;
-import com.example.seersandroid.data.model.Student;
 import com.example.seersandroid.data.source.Colleges.remote.CollegeRemoteDataSource;
-import com.example.seersandroid.data.source.scopes.Local;
+import com.example.seersandroid.data.source.Recommendation.remote.RecommendationRemoteDataSource;
 import com.example.seersandroid.data.source.scopes.Remote;
-import com.example.seersandroid.data.source.student.StudentDataSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,25 +15,24 @@ import javax.inject.Inject;
 import androidx.annotation.NonNull;
 import io.reactivex.Single;
 
+
 @AppScoped
-public class CollegeRepository {
+public class RecommendationRepository {
 
-    CollegeRemoteDataSource mCollegeRemoteDataSource;
+    RecommendationRemoteDataSource mRecommendationRemoteDataSource;
     OnlineChecker mOnlineChecker;
-
     List<College> collegeList = new ArrayList<>();
 
     @Inject
-    public CollegeRepository(@Remote CollegeRemoteDataSource collegeRemoteDataSource,
+    public RecommendationRepository(@Remote RecommendationRemoteDataSource recommendationRemoteDataSource,
                              OnlineChecker onlineChecker){
-        mCollegeRemoteDataSource = collegeRemoteDataSource;
+        mRecommendationRemoteDataSource = recommendationRemoteDataSource;
         mOnlineChecker = onlineChecker;
     }
 
-    @NonNull
-    public Single<List<College>> geColleges(String token) {
-        return mCollegeRemoteDataSource.getColleges(token)
-                .doOnSuccess(res -> collegeList.addAll(res));
+    public Single<List<College>> getSchoolRecommendation(String token, String studentId){
+        return Single.just(collegeList);
+        //return mRecommendationRemoteDataSource.getSchoolRecommendation(token,studentId);
     }
 
     public void createCollegeList(){
@@ -49,4 +46,5 @@ public class CollegeRepository {
         collegeList.add(c2);
         collegeList.add(c3);
     }
+
 }

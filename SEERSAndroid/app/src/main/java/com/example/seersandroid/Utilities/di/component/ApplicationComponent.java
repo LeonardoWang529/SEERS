@@ -9,6 +9,7 @@ import com.example.seersandroid.Utilities.di.module.ViewModelModule;
 import com.example.seersandroid.Utilities.scopes.AppScoped;
 import com.example.seersandroid.base.BaseApplication;
 import com.example.seersandroid.data.source.Colleges.CollegeRepositoryModule;
+import com.example.seersandroid.data.source.Recommendation.RecommendationRepositoryModule;
 import com.example.seersandroid.data.source.student.StudentRepositoryModule;
 
 import dagger.BindsInstance;
@@ -19,6 +20,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 
 @AppScoped
 @Component(modules = {
+        RecommendationRepositoryModule.class,
         StudentRepositoryModule.class,
         CollegeRepositoryModule.class,
         ContextModule.class,

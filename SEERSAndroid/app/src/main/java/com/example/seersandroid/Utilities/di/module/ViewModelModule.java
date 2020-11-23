@@ -6,6 +6,7 @@ import com.example.seersandroid.Utilities.scopes.AppScoped;
 import com.example.seersandroid.ViewViewModel.Colleges.CollegeLists.CollegeListViewModel;
 import com.example.seersandroid.ViewViewModel.Login.StudentViewModel;
 import com.example.seersandroid.ViewViewModel.PersonalDashBoard.PersonalDashBoardViewModel;
+import com.example.seersandroid.ViewViewModel.Recommendation.RecommendationViewModel;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
@@ -30,6 +31,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CollegeListViewModel.class)
     abstract ViewModel bindCollegeListViewModel(CollegeListViewModel collegeListViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RecommendationViewModel.class)
+    abstract ViewModel bindRecommendationViewModel(RecommendationViewModel recommendationViewModel);
 
     @Binds
     @AppScoped
