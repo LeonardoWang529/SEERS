@@ -51,7 +51,7 @@ public class CollegeListAdapter extends
     @Override
     public void onBindViewHolder(@NonNull CollegeHolder holder, final int position) {
         holder.collegeState.setText(collegeList.get(position).getState());
-        holder.collegeName.setText(collegeList.get(position).getName());
+        holder.collegeName.setText(collegeList.get(position).getCollegeName());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

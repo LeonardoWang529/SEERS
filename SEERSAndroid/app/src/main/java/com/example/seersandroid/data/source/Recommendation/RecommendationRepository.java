@@ -3,6 +3,7 @@ package com.example.seersandroid.data.source.Recommendation;
 import com.example.seersandroid.Utilities.ConnectivityUtils.OnlineChecker;
 import com.example.seersandroid.Utilities.scopes.AppScoped;
 import com.example.seersandroid.data.model.College;
+import com.example.seersandroid.data.model.Student;
 import com.example.seersandroid.data.source.Colleges.remote.CollegeRemoteDataSource;
 import com.example.seersandroid.data.source.Recommendation.remote.RecommendationRemoteDataSource;
 import com.example.seersandroid.data.source.scopes.Remote;
@@ -30,21 +31,9 @@ public class RecommendationRepository {
         mOnlineChecker = onlineChecker;
     }
 
-    public Single<List<College>> getSchoolRecommendation(String token, String studentId){
-        return Single.just(collegeList);
-        //return mRecommendationRemoteDataSource.getSchoolRecommendation(token,studentId);
+    public Single<List<College>> getSchoolRecommendation(Student student){
+        return mRecommendationRemoteDataSource.getSchoolRecommendation(student);
     }
 
-    public void createCollegeList(){
-        College c = new College("San Jose State University","CA","1 Washington Sq, San Jose, CA 95192");
-        College c1 = new College("San Jose State University","CA","1 Washington Sq, San Jose, CA 95192");
-        College c2 = new College("San Jose State University","CA","1 Washington Sq, San Jose, CA 95192");
-        College c3 = new College("San Jose State University","CA","1 Washington Sq, San Jose, CA 95192");
-
-        collegeList.add(c);
-        collegeList.add(c1);
-        collegeList.add(c2);
-        collegeList.add(c3);
-    }
 
 }

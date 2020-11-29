@@ -3,34 +3,135 @@ package com.example.seersandroid.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.PrimaryKey;
+
 public class College {
-    String name;
-    String state;
-    String control;
-    String location;
-    String percent_admittance;
-    String no_applicats;
-    String sat_vabal;
-    String sat_math;
-    String expresses;
-    String percent_financial_aid;
-    String male_female_ratio;
-    String academics_scale;
-    String social_scale;
-    String quality_of_life_scale;
 
-    public College(String name, String state, String location){
-        this.name = name;
-        this.state = state;
-        this.location = location;
+    @NonNull
+    @PrimaryKey
+    @SerializedName("id")
+    @Expose
+    private String collegeId;
+
+    @SerializedName("name")
+    public String collegeName;
+
+    @SerializedName("lon")
+    public String lon;
+
+    @SerializedName("lat")
+    public String lat;
+
+    @SerializedName("state")
+    public String state;
+
+    @SerializedName("control")
+    public String control;
+
+    @SerializedName("urbanization")
+    public String urbanization;
+
+    @SerializedName("religious_affiliation")
+    public String religious_affiliation;
+
+    @SerializedName("offers_associate_degree")
+    public String offers_associate_degree;
+
+    @SerializedName("offers_bachelor_degree")
+    public String offers_bachelor_degree;
+
+    @SerializedName("offers_master_degree")
+    public String offers_master_degree;
+
+    @SerializedName("offers_doctor_degree_research_scholarship")
+    public String offers_doctor_degree_research_scholarship;
+
+    @SerializedName("offers_doctor_degree_professional_practice")
+    public String offers_doctor_degree_professional_practice;
+
+    @SerializedName("tuition_and_fees")
+    public String tuition_and_fees;
+
+    @SerializedName("applicants_total")
+    public String applicants_total;
+
+    @SerializedName("admissions_total")
+    public String admissions_total;
+
+    @SerializedName("enrolled_total")
+    public String enrolled_total;
+
+    @SerializedName("percent_admitted_total")
+    public String percent_admitted_total;
+
+    @SerializedName("total_enrollment")
+    public String total_enrollment;
+
+    @SerializedName("undergraduate_total_enrollment")
+    public String undergraduate_total_enrollment;
+
+    @SerializedName("graduate_total_enrollment")
+    public String graduate_total_enrollment;
+
+    @SerializedName("sat_reading_25th_percentile_score")
+    public String sat_reading_25th_percentile_score;
+
+    @SerializedName("sat_reading_75th_percentile_score")
+    public String sat_reading_75th_percentile_score;
+
+    @SerializedName("sat_math_25th_percentile_score")
+    public String sat_math_25th_percentile_score;
+
+    @SerializedName("sat_math_75th_percentile_score")
+    public String sat_math_75th_percentile_score;
+
+    @SerializedName("sat_writing_25th_percentile_score")
+    public String sat_writing_25th_percentile_score;
+
+    @SerializedName("sat_writing_75th_percentile_score")
+    public String sat_writing_75th_percentile_score;
+    @SerializedName("act_25th_percentile_score")
+    public String act_25th_percentile_score;
+
+    @SerializedName("act_75th_percentile_score")
+    public String act_75th_percentile_score;
+
+    @NonNull
+    public String getCollegeId() {
+        return collegeId;
     }
 
-    public String getName() {
-        return name;
+    public void setCollegeId(@NonNull String collegeId) {
+        this.collegeId = collegeId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getCollegeName() {
+        return collegeName;
+    }
+
+    public void setCollegeName(String collegeName) {
+        this.collegeName = collegeName;
+    }
+
+    public String getLon() {
+        return lon;
+    }
+
+    public void setLon(String lon) {
+        this.lon = lon;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
     }
 
     public String getState() {
@@ -49,91 +150,187 @@ public class College {
         this.control = control;
     }
 
-    public String getLocation() {
-        return location;
+    public String getUrbanization() {
+        return urbanization;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setUrbanization(String urbanization) {
+        this.urbanization = urbanization;
     }
 
-    public String getPercent_admittance() {
-        return percent_admittance;
+    public String getReligious_affiliation() {
+        return religious_affiliation;
     }
 
-    public void setPercent_admittance(String percent_admittance) {
-        this.percent_admittance = percent_admittance;
+    public void setReligious_affiliation(String religious_affiliation) {
+        this.religious_affiliation = religious_affiliation;
     }
 
-    public String getNo_applicats() {
-        return no_applicats;
+    public String getOffers_associate_degree() {
+        return offers_associate_degree;
     }
 
-    public void setNo_applicats(String no_applicats) {
-        this.no_applicats = no_applicats;
+    public void setOffers_associate_degree(String offers_associate_degree) {
+        this.offers_associate_degree = offers_associate_degree;
     }
 
-    public String getSat_vabal() {
-        return sat_vabal;
+    public String getOffers_bachelor_degree() {
+        return offers_bachelor_degree;
     }
 
-    public void setSat_vabal(String sat_vabal) {
-        this.sat_vabal = sat_vabal;
+    public void setOffers_bachelor_degree(String offers_bachelor_degree) {
+        this.offers_bachelor_degree = offers_bachelor_degree;
     }
 
-    public String getSat_math() {
-        return sat_math;
+    public String getOffers_master_degree() {
+        return offers_master_degree;
     }
 
-    public void setSat_math(String sat_math) {
-        this.sat_math = sat_math;
+    public void setOffers_master_degree(String offers_master_degree) {
+        this.offers_master_degree = offers_master_degree;
     }
 
-    public String getExpresses() {
-        return expresses;
+    public String getOffers_doctor_degree_research_scholarship() {
+        return offers_doctor_degree_research_scholarship;
     }
 
-    public void setExpresses(String expresses) {
-        this.expresses = expresses;
+    public void setOffers_doctor_degree_research_scholarship(String offers_doctor_degree_research_scholarship) {
+        this.offers_doctor_degree_research_scholarship = offers_doctor_degree_research_scholarship;
     }
 
-    public String getPercent_financial_aid() {
-        return percent_financial_aid;
+    public String getOffers_doctor_degree_professional_practice() {
+        return offers_doctor_degree_professional_practice;
     }
 
-    public void setPercent_financial_aid(String percent_financial_aid) {
-        this.percent_financial_aid = percent_financial_aid;
+    public void setOffers_doctor_degree_professional_practice(String offers_doctor_degree_professional_practice) {
+        this.offers_doctor_degree_professional_practice = offers_doctor_degree_professional_practice;
     }
 
-    public String getMale_female_ratio() {
-        return male_female_ratio;
+    public String getTuition_and_fees() {
+        return tuition_and_fees;
     }
 
-    public void setMale_female_ratio(String male_female_ratio) {
-        this.male_female_ratio = male_female_ratio;
+    public void setTuition_and_fees(String tuition_and_fees) {
+        this.tuition_and_fees = tuition_and_fees;
     }
 
-    public String getAcademics_scale() {
-        return academics_scale;
+    public String getApplicants_total() {
+        return applicants_total;
     }
 
-    public void setAcademics_scale(String academics_scale) {
-        this.academics_scale = academics_scale;
+    public void setApplicants_total(String applicants_total) {
+        this.applicants_total = applicants_total;
     }
 
-    public String getSocial_scale() {
-        return social_scale;
+    public String getAdmissions_total() {
+        return admissions_total;
     }
 
-    public void setSocial_scale(String social_scale) {
-        this.social_scale = social_scale;
+    public void setAdmissions_total(String admissions_total) {
+        this.admissions_total = admissions_total;
     }
 
-    public String getQuality_of_life_scale() {
-        return quality_of_life_scale;
+    public String getEnrolled_total() {
+        return enrolled_total;
     }
 
-    public void setQuality_of_life_scale(String quality_of_life_scale) {
-        this.quality_of_life_scale = quality_of_life_scale;
+    public void setEnrolled_total(String enrolled_total) {
+        this.enrolled_total = enrolled_total;
+    }
+
+    public String getPercent_admitted_total() {
+        return percent_admitted_total;
+    }
+
+    public void setPercent_admitted_total(String percent_admitted_total) {
+        this.percent_admitted_total = percent_admitted_total;
+    }
+
+    public String getTotal_enrollment() {
+        return total_enrollment;
+    }
+
+    public void setTotal_enrollment(String total_enrollment) {
+        this.total_enrollment = total_enrollment;
+    }
+
+    public String getUndergraduate_total_enrollment() {
+        return undergraduate_total_enrollment;
+    }
+
+    public void setUndergraduate_total_enrollment(String undergraduate_total_enrollment) {
+        this.undergraduate_total_enrollment = undergraduate_total_enrollment;
+    }
+
+    public String getGraduate_total_enrollment() {
+        return graduate_total_enrollment;
+    }
+
+    public void setGraduate_total_enrollment(String graduate_total_enrollment) {
+        this.graduate_total_enrollment = graduate_total_enrollment;
+    }
+
+    public String getSat_reading_25th_percentile_score() {
+        return sat_reading_25th_percentile_score;
+    }
+
+    public void setSat_reading_25th_percentile_score(String sat_reading_25th_percentile_score) {
+        this.sat_reading_25th_percentile_score = sat_reading_25th_percentile_score;
+    }
+
+    public String getSat_reading_75th_percentile_score() {
+        return sat_reading_75th_percentile_score;
+    }
+
+    public void setSat_reading_75th_percentile_score(String sat_reading_75th_percentile_score) {
+        this.sat_reading_75th_percentile_score = sat_reading_75th_percentile_score;
+    }
+
+    public String getSat_math_25th_percentile_score() {
+        return sat_math_25th_percentile_score;
+    }
+
+    public void setSat_math_25th_percentile_score(String sat_math_25th_percentile_score) {
+        this.sat_math_25th_percentile_score = sat_math_25th_percentile_score;
+    }
+
+    public String getSat_math_75th_percentile_score() {
+        return sat_math_75th_percentile_score;
+    }
+
+    public void setSat_math_75th_percentile_score(String sat_math_75th_percentile_score) {
+        this.sat_math_75th_percentile_score = sat_math_75th_percentile_score;
+    }
+
+    public String getSat_writing_25th_percentile_score() {
+        return sat_writing_25th_percentile_score;
+    }
+
+    public void setSat_writing_25th_percentile_score(String sat_writing_25th_percentile_score) {
+        this.sat_writing_25th_percentile_score = sat_writing_25th_percentile_score;
+    }
+
+    public String getSat_writing_75th_percentile_score() {
+        return sat_writing_75th_percentile_score;
+    }
+
+    public void setSat_writing_75th_percentile_score(String sat_writing_75th_percentile_score) {
+        this.sat_writing_75th_percentile_score = sat_writing_75th_percentile_score;
+    }
+
+    public String getAct_25th_percentile_score() {
+        return act_25th_percentile_score;
+    }
+
+    public void setAct_25th_percentile_score(String act_25th_percentile_score) {
+        this.act_25th_percentile_score = act_25th_percentile_score;
+    }
+
+    public String getAct_75th_percentile_score() {
+        return act_75th_percentile_score;
+    }
+
+    public void setAct_75th_percentile_score(String act_75th_percentile_score) {
+        this.act_75th_percentile_score = act_75th_percentile_score;
     }
 }

@@ -15,7 +15,13 @@ import retrofit2.http.Query;
 public interface CollegeApiService {
 
     @Headers("Content-Type: application/json")
-    @GET("college")
-    Single<List<College>> getCollegeList(@Header("X-Auth-Token") String token);
+    @GET("college/order")
+    Single<List<College>> getCollegeList(@Header("Authorization") String token,@Query("num") String num, @Query("page") String page,
+                                         @Query("orderby") String orderby);
+
+
+    @Headers("Content-Type: application/json")
+    @GET("/college/name")
+    Single<List<College>> getCollegeByName(@Header("Authorization") String token,@Query("name") String name);
 
 }

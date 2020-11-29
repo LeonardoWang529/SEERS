@@ -60,31 +60,31 @@ public final class Student {
 
     @ColumnInfo(name = "age")
     @SerializedName("age")
-    public String age;
+    public int age;
 
     @ColumnInfo(name = "gpa")
     @SerializedName("gpa")
-    public String gpa;
+    public double gpa;
 
     @ColumnInfo(name = "act")
     @SerializedName("act")
-    public String act;
+    public int act;
 
     @ColumnInfo(name = "sat_math")
     @SerializedName("sat_math")
-    public String SAT_math;
+    public int SAT_math;
 
     @ColumnInfo(name = "sat_reading")
     @SerializedName("sat_reading")
-    public String sat_reading;
+    public int sat_reading;
 
     @ColumnInfo(name = "expense_limit")
     @SerializedName("expense_limit")
-    public String expense_limit;
+    public int expense_limit;
 
     @ColumnInfo(name = "sat_writing")
     @SerializedName("sat_writing")
-    public String sat_writing;
+    public int sat_writing;
 
     @ColumnInfo(name = "token")
     @SerializedName("token")
@@ -127,22 +127,6 @@ public final class Student {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public String getSAT_math() {
-        return SAT_math;
-    }
-
-    public void setSAT_math(String SAT_math) {
-        this.SAT_math = SAT_math;
-    }
-
-    public String getExpense_limit() {
-        return expense_limit;
-    }
-
-    public void setExpense_limit(String expense_limit) {
-        this.expense_limit = expense_limit;
     }
 
     public boolean isUpToDate() {
@@ -205,55 +189,71 @@ public final class Student {
         this.currentId = currentId;
     }
 
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    public String getGpa() {
-        return gpa;
-    }
-
-    public void setGpa(String gpa) {
-        this.gpa = gpa;
-    }
-
-    public String getAct() {
-        return act;
-    }
-
-    public void setAct(String act) {
-        this.act = act;
-    }
-
-    public String getSat_reading() {
-        return sat_reading;
-    }
-
-    public void setSat_reading(String sat_reading) {
-        this.sat_reading = sat_reading;
-    }
-
-    public String getSat_writing() {
-        return sat_writing;
-    }
-
-    public void setSat_writing(String sat_writing) {
-        this.sat_writing = sat_writing;
-    }
-
     public static long getStaleMs() {
         return STALE_MS;
     }
 
-    public String getToken() {
-        return "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMyIsIlJvbGVzIjpbIlN0dWRlbnQiXSwiZXhwIjoxNjA2MDg4NDQ1fQ.M9D5Y_7YocCRW9R6orUsOmOhTBPvFzi8oao0N_gHYpi3W9T7ZpWMOHNO4Jj3gEW3lYhNH2puzY5zp4UzRR6LoA";
-    }
-
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(double gpa) {
+        this.gpa = gpa;
+    }
+
+    public int getAct() {
+        return act;
+    }
+
+    public void setAct(int act) {
+        this.act = act;
+    }
+
+    public int getSAT_math() {
+        return SAT_math;
+    }
+
+    public void setSAT_math(int SAT_math) {
+        this.SAT_math = SAT_math;
+    }
+
+    public int getSat_reading() {
+        return sat_reading;
+    }
+
+    public void setSat_reading(int sat_reading) {
+        this.sat_reading = sat_reading;
+    }
+
+    public int getExpense_limit() {
+        return expense_limit;
+    }
+
+    public void setExpense_limit(int expense_limit) {
+        this.expense_limit = expense_limit;
+    }
+
+    public int getSat_writing() {
+        return sat_writing;
+    }
+
+    public void setSat_writing(int sat_writing) {
+        this.sat_writing = sat_writing;
+    }
+
+    public String getToken() {
+        return token;
     }
 }

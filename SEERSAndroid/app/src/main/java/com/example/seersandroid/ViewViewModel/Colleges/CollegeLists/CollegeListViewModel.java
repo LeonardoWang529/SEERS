@@ -27,7 +27,17 @@ public class CollegeListViewModel extends ViewModel {
     }
 
     public void getCollectData(){
-        mCollegeRepository.geColleges(mStudentRepository.getCurrentStudent().getToken())
+        mCollegeRepository.geColleges(mStudentRepository.getCurrentStudent().getToken(),"20","1","id")
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.computation())
+                .subscribe(
+                        success -> collegeListResult.setValue(new CollegeListResult(success)),
+                        error -> collegeListResult.setValue(new CollegeListResult(error.getMessage()))
+                );
+    }
+
+    public void getCollectByName(String name){
+        mCollegeRepository.getCollegesByName(mStudentRepository.getCurrentStudent().getToken(),name)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.computation())
                 .subscribe(

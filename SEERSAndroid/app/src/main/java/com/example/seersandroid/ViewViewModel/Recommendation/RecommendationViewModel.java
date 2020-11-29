@@ -31,7 +31,15 @@ public class RecommendationViewModel extends ViewModel {
     }
 
     public void getSchoolRecommendation(){
-        mRecommendationRepository.getSchoolRecommendation(mStudentRepository.getCurrentStudent().getToken(),mStudentRepository.getCurrentStudent().getUserId())
+/*        mRecommendationRepository.getSchoolRecommendation(mStudentRepository.getCurrentStudent())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.computation())
+                .subscribe(
+                        success -> collegeListResult.setValue(new RecommendationCollegeListResult(success)),
+                        error -> collegeListResult.setValue(new RecommendationCollegeListResult(error.getMessage()))
+                );*/
+
+        mCollegeRepository.geColleges(mStudentRepository.getCurrentStudent().getToken(),"10","1","id")
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.computation())
                 .subscribe(

@@ -33,20 +33,14 @@ public class CollegeRepository {
     }
 
     @NonNull
-    public Single<List<College>> geColleges(String token) {
-        return mCollegeRemoteDataSource.getColleges(token)
+    public Single<List<College>> geColleges(String token, String num, String page, String orderby) {
+        return mCollegeRemoteDataSource.getColleges(token,num,page,orderby)
                 .doOnSuccess(res -> collegeList.addAll(res));
     }
 
-    public void createCollegeList(){
-        College c = new College("San Jose State University","CA","1 Washington Sq, San Jose, CA 95192");
-        College c1 = new College("San Jose State University","CA","1 Washington Sq, San Jose, CA 95192");
-        College c2 = new College("San Jose State University","CA","1 Washington Sq, San Jose, CA 95192");
-        College c3 = new College("San Jose State University","CA","1 Washington Sq, San Jose, CA 95192");
-
-        collegeList.add(c);
-        collegeList.add(c1);
-        collegeList.add(c2);
-        collegeList.add(c3);
+    @NonNull
+    public Single<List<College>> getCollegesByName(String token, String name) {
+        return mCollegeRemoteDataSource.getCollegesByName(token,name);
     }
+
 }

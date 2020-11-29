@@ -1,17 +1,20 @@
 package com.example.seersandroid.ViewViewModel.Recommendation;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.seersandroid.Classes.OnItemClickListener;
 import com.example.seersandroid.R;
 import com.example.seersandroid.Utilities.ViewModelFactory;
+import com.example.seersandroid.ViewViewModel.Colleges.CollegeDetailActivity;
 import com.example.seersandroid.ViewViewModel.Colleges.CollegeLists.CollegeListAdapter;
 import com.example.seersandroid.ViewViewModel.Colleges.CollegeLists.CollegeListResult;
 import com.example.seersandroid.ViewViewModel.Colleges.CollegeLists.CollegeListViewModel;
 import com.example.seersandroid.ViewViewModel.Login.StudentViewModel;
 import com.example.seersandroid.base.BaseFragment;
+import com.example.seersandroid.data.model.College;
 
 import javax.inject.Inject;
 
@@ -74,6 +77,8 @@ public class UniversityRecFragment extends BaseFragment implements OnItemClickLi
 
     @Override
     public void onClick(Object o) {
-
+        Intent i = new Intent(getActivity(), CollegeDetailActivity.class);
+        i.putExtra("COLLEGE_ID",((College)o).getCollegeId());
+        startActivity(i);
     }
 }

@@ -22,8 +22,12 @@ public class CollegeRemoteDataSource {
         mCollegeApiService = collegeApiService;
     }
 
-    public Single<List<College>> getColleges(String token){
-        return mCollegeApiService.getCollegeList(token);
+    public Single<List<College>> getColleges(String token, String num, String page, String orderby){
+        return mCollegeApiService.getCollegeList(token, num, page, orderby);
+    }
+
+    public Single<List<College>> getCollegesByName(String token, String name){
+        return mCollegeApiService.getCollegeByName(token, name);
     }
 
 }

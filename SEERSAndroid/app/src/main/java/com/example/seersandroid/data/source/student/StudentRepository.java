@@ -29,8 +29,20 @@ public class StudentRepository implements StudentDataSource {
     @NonNull
     @Override
     public Single<Student> getStudent(@NonNull String userName, @NonNull String password) {
-        return mStudentsRemoteDataSource.getStudent(userName,password).
-                doOnSuccess(this::saveStudent);
+        //return mStudentsRemoteDataSource.getStudent(userName,password).doOnSuccess(this::saveStudent);
+        Student student = new Student();
+        student.setUserId("13");
+        student.setUserName("test2@test.com");
+        student.setFirstName("Hey");
+        student.setLastName("Zhang");
+        student.setGpa(100);
+        student.setSAT_math(100);
+        student.setSat_reading(100);
+        student.setSat_writing(100);
+        student.setAct(100);
+        student.setToken("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMyIsIlJvbGVzIjpbIlN0dWRlbnQiXSwiZXhwIjoxNjA2NjM3MDc0fQ.NcWbc5oUYlxwlQdIWQujzkTcLEGlMnPvoBl257EH_zc2m3ZtYCDKHFNQvcDy8nnmUjldKINW9K1CyOXxqqh89g");
+        saveStudent(student);
+        return Single.just(student);
     }
 
     public Student getCurrentStudent(){

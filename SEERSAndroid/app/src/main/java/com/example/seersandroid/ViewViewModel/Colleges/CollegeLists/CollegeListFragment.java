@@ -1,6 +1,7 @@
 package com.example.seersandroid.ViewViewModel.Colleges.CollegeLists;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import com.example.seersandroid.Classes.OnItemClickListener;
 import com.example.seersandroid.MainActivity;
 import com.example.seersandroid.R;
 import com.example.seersandroid.Utilities.ViewModelFactory;
+import com.example.seersandroid.ViewViewModel.Colleges.CollegeDetailActivity;
 import com.example.seersandroid.ViewViewModel.Colleges.CollegeItemFragment;
 import com.example.seersandroid.ViewViewModel.StudentID.StudentIdFragment;
 import com.example.seersandroid.base.BaseFragment;
@@ -30,6 +32,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
+import scala.Int;
 
 public class CollegeListFragment extends BaseFragment implements OnItemClickListener{
 
@@ -79,10 +82,13 @@ public class CollegeListFragment extends BaseFragment implements OnItemClickList
     public void onResume() {
         super.onResume();
         collegeListViewModel.getCollectData();
+        //collegeListViewModel.getCollectByName();
     }
 
     @Override
     public void onClick(Object o) {
-
+        Intent i = new Intent(getActivity(), CollegeDetailActivity.class);
+        i.putExtra("COLLEGE_ID",((College)o).getCollegeId());
+        startActivity(i);
     }
 }

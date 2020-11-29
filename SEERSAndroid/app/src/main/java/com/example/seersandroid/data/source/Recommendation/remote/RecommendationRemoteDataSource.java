@@ -2,6 +2,7 @@ package com.example.seersandroid.data.source.Recommendation.remote;
 
 import com.example.seersandroid.Utilities.scopes.AppScoped;
 import com.example.seersandroid.data.model.College;
+import com.example.seersandroid.data.model.Student;
 import com.example.seersandroid.data.source.Colleges.remote.CollegeApiService;
 
 import java.util.List;
@@ -22,8 +23,8 @@ public class RecommendationRemoteDataSource {
         mRecommendationApiService = recommendationApiService;
     }
 
-    public Single<List<College>> getSchoolRecommendation(String token, String studentId){
-        return mRecommendationApiService.getSchoolRecommendation(token,studentId);
+    public Single<List<College>> getSchoolRecommendation(Student studnent){
+        return mRecommendationApiService.getSchoolRecommendation(studnent);
     }
 
 }

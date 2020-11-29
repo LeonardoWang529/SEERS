@@ -59,6 +59,8 @@
         <activity
             android:name=".ViewViewModel.Navigation.NavigationActivity" />
 
+        <activity
+            android:name=".ViewViewModel.Colleges.CollegeDetailActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
